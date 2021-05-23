@@ -23,7 +23,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>VeryNoise - A very nice noise pattern generator</title>
           {this.props.styleTags}
           <script key="youtube-embed" src="/static/perlin.js" defer async />
         </Head>

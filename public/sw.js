@@ -23,14 +23,15 @@ function gridNoise(animationData) {
   let distortion = animationData.distortion;
   var numRows = 300;
   var numCols = 300;
+  let outsideMargin = 20;
 
   const ctx = mainCanvas.getContext("2d");
   ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
 
   let p = new Path2D();
 
-  for (let i = 0; i < numRows; i++) {
-    for (let j = 0; j < numCols; j++) {
+  for (let i = outsideMargin; i < numRows - outsideMargin; i++) {
+    for (let j = outsideMargin; j < numCols - outsideMargin; j++) {
       let x = j * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
       let y = i * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
 

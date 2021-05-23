@@ -63,9 +63,35 @@ const CanvasComponent = ({ animationData }) => {
           </Button>
         </ButtonContainer>
       </Draggable>
+      <EmailContainer>
+        <Description>
+          Updates on this project? Made by{" "}
+          <a href="https://twitter.com/iamnottheway" target="_blank">
+            jbnj
+          </a>
+        </Description>
+        <a href="https://airtable.com/shrOLfyNZ6in20FAp" target="_blank">
+          <Button>Hellz ya!</Button>
+        </a>
+      </EmailContainer>
     </Wrapper>
   );
 };
+
+const Description = styled.p`
+  font-family: sans-serif;
+  margin: 5px 0px;
+`;
+
+const EmailContainer = styled.div`
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  background-color: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 20px;
+`;
 
 const AnimationComponent = () => {
   const [animParams, setAnimParams] = useState({

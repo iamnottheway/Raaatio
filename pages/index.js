@@ -55,10 +55,16 @@ const CanvasComponent = ({ animationData }) => {
 
   return (
     <Wrapper>
-      <Canvas ref={canvasRef}></Canvas>
-      <Button className="nodrag" onClick={download}>
-        Download
-      </Button>
+      <Draggable>
+        <Canvas ref={canvasRef}></Canvas>
+      </Draggable>
+      <Draggable cancel=".nodrag">
+        <ButtonContainer>
+          <Button className="nodrag" onClick={download}>
+            Download
+          </Button>
+        </ButtonContainer>
+      </Draggable>
     </Wrapper>
   );
 };
@@ -139,6 +145,14 @@ const Wrapper = styled.div`
   background: #f9f9f9;
   display: grid;
   place-items: center;
+`;
+
+const ButtonContainer = styled.div`
+  padding: 20px;
+  width: 300px;
+  background-color: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 `;
 
 const SettingsContainer = styled.div`

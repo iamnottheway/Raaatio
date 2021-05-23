@@ -1,6 +1,7 @@
 importScripts("/static/perlin.js");
 
 let mainCanvas = null;
+let downloadData = "";
 self.addEventListener("message", (event) => {
   if (event.data.canvas) {
     mainCanvas = event.data.canvas;
@@ -8,26 +9,33 @@ self.addEventListener("message", (event) => {
   if (event.data.type === "run_canvas") {
     gridNoise(event.data.animData);
   }
+
+  if (event.data.type === "download") {
+    console.log(downloadData);
+  }
 });
 
 function gridNoise(animationData) {
   var dotMargin = 0;
   let dotDiameter = 1;
   let dotRadius = dotDiameter / 2;
-  let xMargin = 4;
-  let distortion = 10;
-  var numRows = 100;
-  var numCols = 100;
+  let xMargin = 1;
+  let distortion = animationData.distortion;
+  var numRows = 300;
+  var numCols = 300;
 
   const ctx = mainCanvas.getContext("2d");
+  ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+
+  let p = new Path2D();
 
   for (let i = 0; i < numRows; i++) {
     for (let j = 0; j < numCols; j++) {
       let x = j * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
       let y = i * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
 
-      // let hue = 150 * noise.perlin2(x / 200, y / 200);
-      // let sat = 100;
+      let c = animationData.color; //"#fff"; //`hsl(${hue},${sat}%,50%)`;
+      ctx.fillStyle = c;
 
       let noisex = noise.perlin2(x / animationData.n1, y / animationData.n2);
       let noisey = noise.perlin2(x / animationData.n2, y / animationData.n1);
@@ -35,9 +43,13 @@ function gridNoise(animationData) {
       let x2 = x + distortion * noisex;
       let y2 = y + distortion * noisey;
 
-      let c = "black"; //`hsl(${hue},${sat}%,50%)`;
-      ctx.fillStyle = c;
-      ctx.fillRect(x2, y2, 1, 1);
+      p.rect(x2, y2, 1, 1);
     }
   }
+
+  ctx.fill(p);
+
+  mainCanvas.convertToBlob({ quality: 1 }).then(function (blob) {
+    downloadData = blob;
+  });
 }

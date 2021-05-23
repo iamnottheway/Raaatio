@@ -1,104 +1,133 @@
-requestAnimationFrame(update); // start anim loop
+var NUM_PARTICLES = (ROWS = 100) * (COLS = 300),
+  THICKNESS = Math.pow(80, 2),
+  SPACING = 3,
+  MARGIN = 100,
+  COLOR = 220,
+  DRAG = 0.95,
+  EASE = 0.25,
+  /*
 
-const ctx = canvas.getContext("2d");
-const width = 1600; // The ideal resolution
-const height = 800; // used to scale content
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+used for sine approximation, but Math.sin in Chrome is still fast enough :)http://jsperf.com/math-sin-vs-sine-approximation
 
-//Scales 2D context to always show the ideal resolution area
-const scaleToFit = () => {
-  // sets canvas scale to fit content
-  var scale = Math.min(canvas.width / width, canvas.height / height);
-  ctx.setTransform(scale, 0, 0, scale, 0, 0);
+B = 4 / Math.PI,
+C = -4 / Math.pow( Math.PI, 2 ),
+P = 0.225,
+
+*/
+
+  container,
+  particle,
+  canvas,
+  mouse,
+  stats,
+  list,
+  ctx,
+  tog,
+  man,
+  dx,
+  dy,
+  mx,
+  my,
+  d,
+  t,
+  f,
+  a,
+  b,
+  i,
+  n,
+  w,
+  h,
+  p,
+  s,
+  r,
+  c;
+
+particle = {
+  vx: 0,
+  vy: 0,
+  x: 0,
+  y: 0,
 };
 
-var redraw = true; // when true scene is redrawn ready for the next display refresh
+function init() {
+  container = document.getElementById("container");
+  canvas = document.createElement("canvas");
 
-// Working with points is easier
-const point = (x = 0, y = 0) => ({ x, y });
-const pointCpy = (p, x = 0, y = 0) => ({ x: p.x + x, y: p.y + y });
-const scalePoint = (origin, point, scale) => {
-  point.x = (point.x - origin.x) * scale + origin.x;
-  point.y = (point.y - origin.y) * scale + origin.y;
-};
+  ctx = canvas.getContext("2d");
+  man = false;
+  tog = true;
 
-const p1 = point(400, 400);
-const pA = point(p1.x, p1.y * 2);
-const pB = point(p1.x * 2, p1.y * 2);
+  list = [];
 
-var delta = 50;
+  w = canvas.width = COLS * SPACING + MARGIN * 2;
+  h = canvas.height = ROWS * SPACING + MARGIN * 2;
 
-// the slider input event should not directly trigger a render
-slider.addEventListener("input", (e) => {
-  delta = Number(e.target.value);
-  redraw = true; // use a semaphore to indicate content needs to redraw.
-});
+  container.style.marginLeft = Math.round(w * -0.5) + "px";
+  container.style.marginTop = Math.round(h * -0.5) + "px";
 
-function update() {
-  // this is the render loop it only draws when redraw is true
-  if (redraw) {
-    // monitor semaphore
-    redraw = false; // clear semaphore
-    ctx.setTransform(1, 0, 0, 1, 0, 0); // resets transform
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    scaleToFit();
-    draw();
+  for (i = 0; i < NUM_PARTICLES; i++) {
+    p = Object.create(particle);
+    p.x = p.ox = MARGIN + SPACING * (i % COLS);
+    p.y = p.oy = MARGIN + SPACING * Math.floor(i / COLS);
+
+    list[i] = p;
   }
-  requestAnimationFrame(update);
-}
 
-function draw() {
-  drawLine(p1, pA, "red");
-  drawLine(p1, pB, "green");
-  drawVBox(pB, delta, p1, "blue");
-}
+  container.addEventListener("mousemove", function (e) {
+    bounds = container.getBoundingClientRect();
+    mx = e.clientX - bounds.left;
+    my = e.clientY - bounds.top;
+    man = true;
+  });
 
-function drawVBox(p, size, vp, col, width) {
-  // p is bottom left vp is vanish point
-  ctx.strokeStyle = col;
-  ctx.lineWidth = width;
-  const p0 = pointCpy(p); // get corners
-  const p1 = pointCpy(p, size);
-  const p2 = pointCpy(p, size, -size);
-  const p3 = pointCpy(p, 0, -size);
-  drawPoly(col, width, p0, p1, p2, p3);
-
-  ctx.beginPath(); // draw vanish lines
-  pathLine(p0, vp);
-  pathLine(p1, vp);
-  pathLine(p2, vp);
-  pathLine(p3, vp);
-  ctx.stroke();
-
-  const scale = 1 - size / (800 * 2);
-  scalePoint(vp, p0, scale);
-  scalePoint(vp, p1, scale);
-  scalePoint(vp, p2, scale);
-  scalePoint(vp, p3, scale);
-  drawPoly(col, width, p0, p1, p2, p3);
-}
-
-// Use function to do common tasks and save your self a lot of typing
-function drawLine(p1, p2, col, width = 1) {
-  ctx.strokeStyle = col;
-  ctx.lineWidth = width;
-  ctx.beginPath();
-  ctx.lineTo(p1.x, p1.y); // First point after beginPath can be lineTo
-  ctx.lineTo(p2.x, p2.y);
-  ctx.stroke();
-}
-function drawPoly(col, width, ...points) {
-  ctx.strokeStyle = col;
-  ctx.lineWidth = width;
-  ctx.beginPath();
-  for (const p of points) {
-    ctx.lineTo(p.x, p.y); // First point after beginPath can be lineTo
+  if (typeof Stats === "function") {
+    document.body.appendChild((stats = new Stats()).domElement);
   }
-  ctx.closePath(); // draw closing line
-  ctx.stroke();
+
+  container.appendChild(canvas);
 }
-function pathLine(p1, p2) {
-  ctx.moveTo(p1.x, p1.y);
-  ctx.lineTo(p2.x, p2.y);
+
+function step() {
+  if (stats) stats.begin();
+
+  if ((tog = !tog)) {
+    if (!man) {
+      t = +new Date() * 0.001;
+      mx = w * 0.5 + Math.cos(t * 2.1) * Math.cos(t * 0.9) * w * 0.45;
+      my = h * 0.5 + Math.sin(t * 3.2) * Math.tan(Math.sin(t * 0.8)) * h * 0.45;
+    }
+
+    for (i = 0; i < NUM_PARTICLES; i++) {
+      p = list[i];
+
+      d = (dx = mx - p.x) * dx + (dy = my - p.y) * dy;
+      f = -THICKNESS / d;
+
+      if (d < THICKNESS) {
+        t = Math.atan2(dy, dx);
+        p.vx += f * Math.cos(t);
+        p.vy += f * Math.sin(t);
+      }
+
+      p.x += (p.vx *= DRAG) + (p.ox - p.x) * EASE;
+      p.y += (p.vy *= DRAG) + (p.oy - p.y) * EASE;
+    }
+  } else {
+    b = (a = ctx.createImageData(w, h)).data;
+
+    for (i = 0; i < NUM_PARTICLES; i++) {
+      p = list[i];
+      (b[(n = (~~p.x + ~~p.y * w) * 4)] = b[n + 1] = b[n + 2] = COLOR),
+        (b[n + 3] = 255);
+    }
+
+    ctx.putImageData(a, 0, 0);
+  }
+
+  if (stats) stats.end();
+
+  requestAnimationFrame(step);
 }
+
+init();
+step();

@@ -47,9 +47,6 @@ const CanvasComponent = ({ animationData }) => {
 
       let img = canvas.toDataURL("image/png");
       downloadURI(img, "download.png");
-
-      // const { current: worker } = workerRef;
-      // worker.postMessage({ type: "download" });
     }
   }
 
@@ -60,7 +57,7 @@ const CanvasComponent = ({ animationData }) => {
       </Draggable>
       <Draggable cancel=".nodrag">
         <ButtonContainer>
-          <Button className="nodrag" onClick={download}>
+          <Button className="nodrag" onClick={download} color="#383fff">
             Download
           </Button>
         </ButtonContainer>
@@ -132,7 +129,7 @@ const Button = styled.button`
   width: 100%;
   padding: 20px 30px;
   border: none;
-  background-color: #000;
+  background-color: ${(props) => (props.color ? props.color : "#000")};
   color: #fff;
   border-radius: 6px;
   cursor: pointer;

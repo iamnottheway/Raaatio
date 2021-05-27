@@ -8,9 +8,10 @@ const CanvasComponent = ({ animationData }) => {
   const canvasRef = useRef(undefined);
   const offscreenCanvasRef = useRef(undefined);
   const workerRef = useRef(undefined);
+  const [offscreenTransfered, setOffscreenTransfered] = useState(false);
 
   useEffect(() => {
-    if (canvasRef) {
+    if (canvasRef && !offscreenTransfered) {
       const { current: canvas } = canvasRef;
 
       const offscreen = canvas.transferControlToOffscreen();
@@ -19,6 +20,7 @@ const CanvasComponent = ({ animationData }) => {
       const worker = new Worker("/sw.js");
 
       worker.postMessage({ canvas: offscreen }, [offscreen]);
+      setOffscreenTransfered(true);
 
       offscreenCanvasRef.current = offscreen;
       workerRef.current = worker;
@@ -65,13 +67,14 @@ const CanvasComponent = ({ animationData }) => {
       </Draggable>
       <EmailContainer>
         <Description>
-          Updates on this project? Made by{" "}
+          Hi! If you'd like an update on this project, please leave you're
+          email. Made by {""}
           <a href="https://twitter.com/iamnottheway" target="_blank">
-            jbnj
+            @iamnottheway
           </a>
         </Description>
         <a href="https://airtable.com/shrOLfyNZ6in20FAp" target="_blank">
-          <Button>Hellz ya!</Button>
+          <Button>Yes, please!</Button>
         </a>
       </EmailContainer>
     </Wrapper>
@@ -81,6 +84,9 @@ const CanvasComponent = ({ animationData }) => {
 const Description = styled.p`
   font-family: sans-serif;
   margin: 5px 0px;
+  font-size: 14px;
+  max-width: 250px;
+  line-height: 150%;
 `;
 
 const EmailContainer = styled.div`
@@ -95,25 +101,30 @@ const EmailContainer = styled.div`
 
 const AnimationComponent = () => {
   const [animParams, setAnimParams] = useState({
-    n1: 0,
-    n2: 0,
+    n1: 1,
+    n2: 1,
+    color: "#fff",
+    backgroundColor: "#58acbc",
+    bgEnabled: true,
+    xMargin: 1,
+    outsideMargin: 20,
+    distortion: 10,
+    shouldRecalculate: true,
   });
-  const [color, setColor] = useState("#fff");
+
+  const {
+    n1,
+    n2,
+    color,
+    outsideMargin,
+    distortion,
+    backgroundColor,
+    bgEnabled,
+  } = animParams;
 
   function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
   }
-
-  useEffect(() => {
-    setAnimParams({
-      ...animParams,
-      n1: randomNumber(1, 300),
-      n2: randomNumber(1, 300),
-      distortion: randomNumber(1, 300),
-      xMargin: randomNumber(1, 300),
-      color: color,
-    });
-  }, []);
 
   function randomize() {
     setAnimParams({
@@ -121,9 +132,29 @@ const AnimationComponent = () => {
       n1: randomNumber(1, 300),
       n2: randomNumber(1, 300),
       distortion: randomNumber(1, 300),
-      xMargin: randomNumber(1, 300),
       color: color,
     });
+  }
+
+  function onChangeInput(event) {
+    let inputFieldName = event.target.dataset.name;
+    let inputFieldValue = event.target.value;
+    let inputType = event.target.type;
+
+    if (inputType === "checkbox") {
+      setAnimParams({
+        ...animParams,
+        bgEnabled: !bgEnabled,
+      });
+    }
+
+    if (inputType === "number") {
+      setAnimParams({
+        ...animParams,
+        shouldRecalculate: true,
+        [inputFieldName]: inputFieldValue,
+      });
+    }
   }
 
   return (
@@ -131,21 +162,129 @@ const AnimationComponent = () => {
       <CanvasComponent animationData={animParams}></CanvasComponent>
       <Draggable cancel=".nodrag">
         <SettingsContainer>
-          <Button className="nodrag" onClick={randomize}>
-            Randomize
-          </Button>
-          <div>
+          <ItemContainer>
+            <InputFieldLabel for="color">Color </InputFieldLabel>
             <HexColorPicker
               className="nodrag"
               color={color}
-              onChange={setColor}
+              id="color"
+              onChange={(color) => {
+                setAnimParams({
+                  ...animParams,
+                  shouldRecalculate: true,
+                  color: color,
+                });
+              }}
             />
-          </div>
+          </ItemContainer>
+
+          <ItemContainer>
+            <InputFieldLabel for="background">Background </InputFieldLabel>
+            <HexColorPicker
+              className="nodrag"
+              id="background"
+              color={backgroundColor}
+              onChange={(color) => {
+                setAnimParams({
+                  ...animParams,
+                  shouldRecalculate: true,
+                  backgroundColor: color,
+                });
+              }}
+            />
+          </ItemContainer>
+
+          <ItemContainer>
+            <InputFieldLabel id="bgenable">Show Background</InputFieldLabel>
+            <input
+              id="bgenable"
+              type="checkbox"
+              checked={bgEnabled}
+              data-name="bgEnabled"
+              onChange={onChangeInput}
+            />
+          </ItemContainer>
+
+          <ItemContainer>
+            <InputFieldLabel for="n1_param">noise 1</InputFieldLabel>
+            <InputField
+              type="number"
+              id="n1_param"
+              onChange={onChangeInput}
+              value={n1}
+              data-name="n1"
+            />
+          </ItemContainer>
+
+          <ItemContainer>
+            <InputFieldLabel for="n2_param">noise 2</InputFieldLabel>
+            <InputField
+              id="n2_param"
+              type="number"
+              onChange={onChangeInput}
+              value={n2}
+              data-name="n2"
+            />
+          </ItemContainer>
+
+          <ItemContainer>
+            <InputFieldLabel for="margin">Margin</InputFieldLabel>
+            <InputField
+              id="margin"
+              type="number"
+              onChange={onChangeInput}
+              value={outsideMargin}
+              data-name="outsideMargin"
+            />
+          </ItemContainer>
+
+          <ItemContainer>
+            <InputFieldLabel for="distortion">Distortion</InputFieldLabel>
+            <InputField
+              id="distortion"
+              type="number"
+              onChange={onChangeInput}
+              value={distortion}
+              data-name="distortion"
+            />
+          </ItemContainer>
+
+          <hr></hr>
+
+          <Button className="nodrag" onClick={randomize}>
+            Randomize
+          </Button>
         </SettingsContainer>
       </Draggable>
     </>
   );
 };
+
+const ItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+`;
+
+const InputField = styled.input`
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin: 4px 0px;
+`;
+
+const InputFieldLabel = styled.label`
+  margin: 0px;
+  margin: 5px 0px;
+  font-size: 10px;
+  color: #333;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-weight: 500;
+`;
 
 export default function Index() {
   return (
@@ -232,6 +371,7 @@ const SettingsContainer = styled.div`
 
   .react-colorful {
     width: 100%;
+    height: 100px;
   }
 `;
 

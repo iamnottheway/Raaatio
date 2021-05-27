@@ -103,8 +103,8 @@ const AnimationComponent = () => {
   const [animParams, setAnimParams] = useState({
     n1: 1,
     n2: 1,
-    color: "#fff",
-    backgroundColor: "#58acbc",
+    color: "#ff66a0",
+    backgroundColor: "#2516f5",
     bgEnabled: true,
     xMargin: 1,
     outsideMargin: 20,

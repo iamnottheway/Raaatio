@@ -23,6 +23,43 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>NoiseIsNice - A very nice noise pattern generator</title>
+          <meta
+            name="title"
+            content="NoiseIsNice - A very nice noise pattern generator"
+          />
+          <meta
+            name="description"
+            content="NoiseIsNice - A very nice noise pattern generator"
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://noiseisnice.com" />
+          <meta
+            property="og:title"
+            content="NoiseIsNice - A very nice noise pattern generator"
+          />
+          <meta
+            property="og:description"
+            content="NoiseIsNice - A very nice noise pattern generator"
+          />
+          <meta
+            property="og:image"
+            content="https://noiseisnice.com/cover.png"
+          />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content="https://noiseisnice.com" />
+          <meta
+            property="twitter:title"
+            content="NoiseIsNice - A very nice noise pattern generator"
+          />
+          <meta
+            property="twitter:description"
+            content="NoiseIsNice - A very nice noise pattern generator"
+          />
+          <meta
+            property="twitter:image"
+            content="https://noiseisnice.com/cover.png"
+          />
           {this.props.styleTags}
           <script key="youtube-embed" src="/static/perlin.js" defer async />
         </Head>

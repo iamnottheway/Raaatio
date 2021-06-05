@@ -39,20 +39,31 @@ function gridNoise(animationData) {
   let p = new Path2D();
 
   if (animationData.shouldRecalculate) {
-    for (let i = outsideMargin; i < numRows - outsideMargin; i++) {
-      for (let j = outsideMargin; j < numCols - outsideMargin; j++) {
-        let x =
-          j * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
-        let y =
-          i * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
+    for (let x = 0; x <= 1; x++) {
+      distortion = Math.random() * 500;
+      // let n1 = Math.random() * 100;
+      // let n2 = Math.random() * 100;
+      for (let i = outsideMargin; i < numRows - outsideMargin; i++) {
+        for (let j = outsideMargin; j < numCols - outsideMargin; j++) {
+          let x =
+            j * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
+          let y =
+            i * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
 
-        let noisex = noise.perlin2(x / animationData.n1, y / animationData.n2);
-        let noisey = noise.perlin2(x / animationData.n2, y / animationData.n1);
+          let noisex = noise.perlin2(
+            x / animationData.n1,
+            y / animationData.n2
+          );
+          let noisey = noise.perlin2(
+            x / animationData.n2,
+            y / animationData.n1
+          );
 
-        let x2 = x + distortion * noisex;
-        let y2 = y + distortion * noisey;
+          let x2 = x + distortion * noisex;
+          let y2 = y + distortion * noisey;
 
-        p.rect(x2, y2, 1, 1);
+          p.rect(x2, y2, 1, 1);
+        }
       }
     }
   }

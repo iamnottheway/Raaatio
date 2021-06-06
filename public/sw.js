@@ -1,8 +1,8 @@
 importScripts("/static/perlin.js");
 
 let mainCanvas = null;
-let downloadData = "";
-self.addEventListener("message", (event) => {
+let downloadImageBlog = "";
+self.addEventListener("message", async (event) => {
   if (event.data.canvas) {
     mainCanvas = event.data.canvas;
   }
@@ -11,18 +11,20 @@ self.addEventListener("message", (event) => {
   }
 
   if (event.data.type === "download") {
-    console.log(downloadData);
+    const ctx = mainCanvas.getContext("2d");
+    // let c = await mainCanvas.convertToBlob();
+    // console.log("this -", URL.createObjectURL(c));
   }
 });
 
-function gridNoise(animationData) {
-  let dotMargin = 0;
+async function gridNoise(animationData) {
+  let dotMargin = 1;
   let dotDiameter = 1;
   let dotRadius = dotDiameter / 2;
   let xMargin = animationData.xMargin;
   let distortion = animationData.distortion;
-  var numRows = 300;
-  var numCols = 300;
+  var numRows = 100;
+  var numCols = 100;
   let outsideMargin = animationData.outsideMargin;
 
   const ctx = mainCanvas.getContext("2d");
@@ -70,7 +72,5 @@ function gridNoise(animationData) {
 
   ctx.fill(p);
 
-  mainCanvas.convertToBlob({ quality: 1 }).then(function (blob) {
-    downloadData = blob;
-  });
+  downloadImageBlog = await mainCanvas.convertToBlob({ quality: 1 });
 }

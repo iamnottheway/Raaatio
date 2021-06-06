@@ -15,9 +15,9 @@ export const Button = styled.button`
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  background: #f9f9f9;
   display: grid;
   place-items: center;
+  grid-area: canvas;
 `;
 
 export const ButtonContainer = styled.div`
@@ -30,8 +30,10 @@ export const ButtonContainer = styled.div`
 
 export const Canvas = styled.canvas`
   background-color: #fff;
-  width: 600px;
-  height: 600px;
+  max-width: 600px;
+  width: 100%;
+  height: 100%;
+
   box-sizing: border-box;
 `;
 

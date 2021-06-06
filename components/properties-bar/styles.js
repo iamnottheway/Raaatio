@@ -4,15 +4,18 @@ export const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 10px;
+  transition: all 0.2s;
 `;
 
 export const RowContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
 
-  > div {
-    margin-right: 15px;
+  @media (max-width: 400px) {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 5px;
   }
 `;
 
@@ -24,6 +27,10 @@ export const InputField = styled.input`
   border: 1px solid #dcdce9;
   box-sizing: border-box;
   border-radius: 2px;
+
+  :focus {
+    outline-color: #6171ff;
+  }
 `;
 
 export const InputFieldLabel = styled.label`
@@ -38,15 +45,20 @@ export const InputFieldLabel = styled.label`
 
 export const SettingsContainer = styled.div`
   padding: 20px;
-  position: fixed;
+  /* position: fixed;
   bottom: 50px;
-  left: 50px;
-  width: 300px;
+  left: 50px; */
+  width: 100%;
+  max-width: 300px;
   background-color: #fff;
 
   border: 1px solid #000000;
   box-shadow: 10px 10px 0px rgba(30, 29, 96, 0.45);
   border-radius: 2px;
+
+  * {
+    transition: height 0.1s ease-in;
+  }
 `;
 
 export const Button = styled.button`
@@ -63,6 +75,15 @@ export const Button = styled.button`
   box-sizing: border-box;
   box-shadow: 6px 6px 0px rgba(20, 29, 107, 0.25);
   border-radius: 1px;
+
+  :focus {
+    outline-color: #6171ff;
+  }
+
+  :active,
+  :hover {
+    box-shadow: 2px 2px 0px rgba(20, 29, 107, 0.25);
+  }
 `;
 
 export const ColorSquare = styled.div`
@@ -82,6 +103,7 @@ export const Picker = styled.div`
   padding: 10px;
   border: 1px solid rgba(39, 37, 117, 0.16);
   border-radius: 2px;
+  margin: 5px 0px;
 
   p {
     margin: 0px;
@@ -96,7 +118,7 @@ export const Picker = styled.div`
 
   .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 

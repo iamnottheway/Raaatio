@@ -7,9 +7,9 @@ export const RenderProvider = ({ children }) => {
     n1: 1,
     n2: 1,
     color: "#FFCBE1",
-    backgroundColor: "#16DAF5",
+    backgroundColor: "#000",
     bgEnabled: true,
-    xMargin: 1,
+    xMargin: 5,
     outsideMargin: 20,
     distortion: 10,
     shouldRecalculate: true,
@@ -20,13 +20,11 @@ export const RenderProvider = ({ children }) => {
   }
 
   function randomize() {
-    // debugger;
     setRenderParams({
       ...renderParams,
       n1: randomNumber(1, 300),
       n2: randomNumber(1, 300),
       distortion: randomNumber(1, 300),
-      //   color: color,
     });
   }
 

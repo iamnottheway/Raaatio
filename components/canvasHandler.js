@@ -1,12 +1,6 @@
 import { useState, useRef, useEffect, useContext } from "react";
-import {
-  Wrapper,
-  ButtonContainer,
-  Button,
-  Canvas,
-  CanvasContainer,
-} from "./styles";
-import { RenderContext } from "../context/renderContext";
+import { Wrapper, Canvas, CanvasContainer } from "./styles";
+import { RenderContext, ExportContext } from "../context/contexts";
 
 const CanvasComponent = () => {
   const canvasRef = useRef(undefined);
@@ -14,6 +8,8 @@ const CanvasComponent = () => {
   const workerRef = useRef(undefined);
   const [offscreenTransfered, setOffscreenTransfered] = useState(false);
   const context = useContext(RenderContext);
+  const exportContext = useContext(ExportContext);
+  const { initializeCanvas } = exportContext;
 
   const { renderParams } = context;
 
@@ -21,7 +17,7 @@ const CanvasComponent = () => {
     if (canvasRef && !offscreenTransfered) {
       const { current: canvas } = canvasRef;
 
-      const offscreen = canvas.transferControlToOffscreen();
+      const offscreen = canvas?.transferControlToOffscreen();
       offscreen.width = 600;
       offscreen.height = 600;
       const worker = new Worker("/sw.js");
@@ -31,6 +27,8 @@ const CanvasComponent = () => {
 
       offscreenCanvasRef.current = offscreen;
       workerRef.current = worker;
+      // initialize canvas in exportProvider
+      initializeCanvas(canvas, worker, offscreen);
     }
   }, []);
 
@@ -42,34 +40,11 @@ const CanvasComponent = () => {
     }
   }, [renderParams]);
 
-  function downloadURI(uri, name) {
-    let link = document.createElement("a");
-    link.download = name;
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
-  function download(e) {
-    if (workerRef && canvasRef) {
-      const { current: canvas } = canvasRef;
-
-      let img = canvas.toDataURL("image/png");
-      downloadURI(img, "download.png");
-    }
-  }
-
   return (
-    <Wrapper>
+    <Wrapper className="canvas">
       <CanvasContainer>
         <Canvas ref={canvasRef}></Canvas>
       </CanvasContainer>
-      {/* <ButtonContainer>
-        <Button onClick={download} color="#383fff">
-          Download
-        </Button>
-      </ButtonContainer> */}
     </Wrapper>
   );
 };

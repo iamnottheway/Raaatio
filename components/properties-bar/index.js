@@ -12,10 +12,13 @@ import {
 } from "./styles";
 
 import { HexColorPicker } from "react-colorful";
-import { RenderContext } from "../../context/renderContext";
+import { RenderContext, ExportContext } from "../../context/contexts";
 
 const PropertiesBar = () => {
   const context = useContext(RenderContext);
+  const exportContext = useContext(ExportContext);
+  const { downloadPNG } = exportContext;
+
   const [isOpenColorPicker, toggoleColorPicker] = useState({
     backgroundColor: false,
     color: false,
@@ -71,7 +74,7 @@ const PropertiesBar = () => {
   }
 
   return (
-    <SettingsContainer>
+    <SettingsContainer className="sidebar">
       <RowContainer>
         <ColorPicker type="color" label={"Color"} />
         <ColorPicker type="backgroundColor" label={"Background"} />
@@ -138,7 +141,7 @@ const PropertiesBar = () => {
       <hr color="#E8E7F1"></hr>
       <Button onClick={randomize}>Randomize</Button>
       <hr color="#E8E7F1"></hr>
-      <Button onClick={() => {}} color="#6082FB">
+      <Button onClick={downloadPNG} color="#6082FB">
         Download
       </Button>
     </SettingsContainer>

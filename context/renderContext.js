@@ -4,14 +4,14 @@ export const RenderContext = createContext();
 
 export const RenderProvider = ({ children }) => {
   const [renderParams, setRenderParams] = useState({
-    n1: 1,
-    n2: 1,
+    n1: 175,
+    n2: 155,
     color: "#FFCBE1",
-    backgroundColor: "#000",
+    backgroundColor: "#2D9FED",
     bgEnabled: true,
     xMargin: 5,
     outsideMargin: 20,
-    distortion: 10,
+    distortion: 123,
     shouldRecalculate: true,
   });
 

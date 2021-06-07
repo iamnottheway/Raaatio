@@ -75,6 +75,32 @@ function init() {
 }
 
 function step() {
+  // you dont manipulate the pixels, you change the particle property
+  // if ( !man ) {
+
+  //   t = +new Date() * 0.001;
+  //   mx = w * 0.5 + ( Math.cos( t * 2.1 ) * Math.cos( t * 0.9 ) * w * 0.45 );
+  //   my = h * 0.5 + ( Math.sin( t * 3.2 ) * Math.tan( Math.sin( t * 0.8 ) ) * h * 0.45 );
+  // }
+
+  // for ( i = 0; i < NUM_PARTICLES; i++ ) {
+
+  //   p = list[i];
+
+  //   d = ( dx = mx - p.x ) * dx + ( dy = my - p.y ) * dy;
+  //   f = -THICKNESS / d;
+
+  //   if ( d < THICKNESS ) {
+  //     t = Math.atan2( dy, dx );
+  //     p.vx += f * Math.cos(t);
+  //     p.vy += f * Math.sin(t);
+  //   }
+
+  //   p.x += ( p.vx *= DRAG ) + (p.ox - p.x) * EASE;
+  //   p.y += ( p.vy *= DRAG ) + (p.oy - p.y) * EASE;
+
+  // }
+
   // creating an image inside the canvas with specified width and height
   b = (a = ctx.createImageData(w, h)).data;
   // b is a 1D array with pixel values. Each particle represents 1 of the rgba values.
@@ -84,6 +110,10 @@ function step() {
   // going thru each particle
   for (i = 0; i < NUM_PARTICLES; i++) {
     p = list[i];
+    // now we need to find the position of the current particle in the 1D array
+    // ~~ is an alternative to math.floor
+    // finding the first color, ie is n, is a bit tricky
+    //vthe rest of the code sets the rest of the pixels to a random color
     (b[(n = (~~p.x + ~~p.y * w) * 4)] =
       b[n + 1] =
       b[n + 2] =

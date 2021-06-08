@@ -60,6 +60,11 @@ export default class MyDocument extends Document {
             property="twitter:image"
             content="https://noiseisnice.com/cover.png"
           />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+            rel="stylesheet"
+          ></link>
           {this.props.styleTags}
           <script key="youtube-embed" src="/static/perlin.js" defer async />
         </Head>

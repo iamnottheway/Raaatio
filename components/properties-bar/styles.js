@@ -39,7 +39,7 @@ export const InputFieldLabel = styled.label`
   font-size: 10px;
   color: #333;
   text-transform: uppercase;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
 `;
 
@@ -107,7 +107,7 @@ export const Picker = styled.div`
 
   p {
     margin: 0px;
-    font-family: sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -135,7 +135,6 @@ export const InfoLabel = styled.p`
   font-size: 12px;
   padding: 10px;
   margin: 5px 0px;
-  font-family: sans-serif;
   line-height: 150%;
   background-color: #f6e8f6;
   color: #000;

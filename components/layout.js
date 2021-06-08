@@ -1,6 +1,7 @@
 import { RenderProvider } from "../context/renderContext";
 import { ExportProvider } from "../context/exportContext";
 import styled from "styled-components";
+import { Header } from "./header";
 
 const Layout = ({ children }) => {
   return (
@@ -14,20 +15,6 @@ const Layout = ({ children }) => {
     </RenderProvider>
   );
 };
-
-const Header = styled.div`
-  width: 100%;
-  height: auto;
-  min-height: 50px;
-  background-color: #fff;
-  position: fixed;
-  top: 0;
-  border-bottom: 1px solid #000000;
-  box-shadow: 0px 10px 0px rgba(49, 46, 205, 0.21);
-  padding: 10px;
-  margin: 0 auto;
-  z-index: 10;
-`;
 
 const Wrapper = styled.div`
   width: 100%;

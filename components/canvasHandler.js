@@ -18,8 +18,8 @@ const CanvasComponent = () => {
       const { current: canvas } = canvasRef;
 
       const offscreen = canvas?.transferControlToOffscreen();
-      offscreen.width = 600;
-      offscreen.height = 600;
+      offscreen.width = 100;
+      offscreen.height = 100;
       const worker = new Worker("/sw.js");
 
       worker.postMessage({ canvas: offscreen }, [offscreen]);

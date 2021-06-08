@@ -130,3 +130,20 @@ export const Picker = styled.div`
     z-index: 10;
   }
 `;
+
+export const InfoLabel = styled.p`
+  font-size: 12px;
+  padding: 10px;
+  margin: 5px 0px;
+  font-family: sans-serif;
+  line-height: 150%;
+  background-color: #f6e8f6;
+  color: #000;
+  border: 1px solid #000;
+
+  a {
+    margin: 0px 5px;
+    color: #000;
+    font-style: bold;
+  }
+`;

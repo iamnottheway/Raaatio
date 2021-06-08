@@ -41,7 +41,9 @@ export const ExportProvider = ({ children }) => {
     if (canvasRef) {
       const { current: canvas } = canvasRef;
       const { current: worker } = workerRef;
-      worker.postMessage({ type: "download" });
+
+      //   canvas.scale(3, 3);
+      //   worker.postMessage({ type: "download" });
 
       let img = canvas.toDataURL("image/png");
       downloadURI(img, "download.png");

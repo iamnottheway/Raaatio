@@ -14,13 +14,13 @@ self.addEventListener("message", async (event) => {
   }
 });
 
-let NUM_PARTICLES = (ROWS = 300) * (COLS = 300),
-  THICKNESS = Math.pow(300, 2),
-  SPACING = 4,
-  MARGIN = 100,
-  COLOR = 220,
-  DRAG = 0.95,
-  EASE = 0.25;
+let NUM_PARTICLES; // = (ROWS = 300) * (COLS = 300),
+(THICKNESS = Math.pow(300, 2)),
+  (SPACING = 4),
+  (MARGIN = 100),
+  (COLOR = 220),
+  (DRAG = 0.95),
+  (EASE = 0.25);
 let dx, dy, mx, my, d, t, f, a, b, i, n, w, h, p, s, r, c;
 
 const hex2rgba = (hex, a = 1) => {
@@ -30,15 +30,24 @@ const hex2rgba = (hex, a = 1) => {
 
 async function gridNoise(animationData) {
   let distortion = animationData.distortion;
-  MARGIN = animationData.outsideMargin;
+  MARGIN = 0; //animationData.outsideMargin;
 
   const ctx = mainCanvas.getContext("2d");
   ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
 
   list = [];
 
-  w = mainCanvas.width = COLS * SPACING + MARGIN * 2;
-  h = mainCanvas.height = ROWS * SPACING + MARGIN * 2;
+  let exportSize = 1;
+
+  w = mainCanvas.width = animationData.cWidth * exportSize;
+  h = mainCanvas.height = animationData.cHeight * exportSize;
+
+  let columns = w / (MARGIN * 2 + SPACING);
+  let rows = h / (MARGIN * 2 + SPACING);
+
+  console.log("cr:", columns, rows);
+
+  NUM_PARTICLES = (ROWS = rows) * (COLS = columns);
 
   let particle = {
     vx: 0,
@@ -46,9 +55,6 @@ async function gridNoise(animationData) {
     x: 0,
     y: 0,
   };
-
-  // ctx.fillStyle = "red";
-  // ctx.fillRect(0, 0, 100, 100);
 
   for (i = 0; i < NUM_PARTICLES; i++) {
     p = Object.create(particle);
@@ -58,6 +64,10 @@ async function gridNoise(animationData) {
     list[i] = p;
   }
 
+  function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   function renderParticles() {
     b = (a = ctx.createImageData(w, h)).data;
     const background = hex2rgba(animationData.backgroundColor);
@@ -65,10 +75,18 @@ async function gridNoise(animationData) {
 
     for (let i = 0; i < b.length; i += 4) {
       // Modify pixel data
-      b[i + 0] = background.r; // R value
-      b[i + 1] = background.g; // G value
-      b[i + 2] = background.b; // B value
-      b[i + 3] = 255; // A value
+      // b[i + 0] = randomInteger(0, 255); // R value
+      // b[i + 1] = randomInteger(0, 255); // G value
+      // b[i + 2] = randomInteger(0, 255); // B value
+      // b[i + 3] = 255; // A value
+      if (animationData.bgEnabled) {
+        b[i + 0] = background.r; // R value
+        b[i + 1] = background.g; // G value
+        b[i + 2] = background.b; // B value
+        b[i + 3] = 255; // A value
+      } else {
+        b[i + 3] = 0; // A value
+      }
     }
 
     for (i = 0; i < NUM_PARTICLES; i++) {

@@ -4,16 +4,21 @@ export const RenderContext = createContext();
 
 export const RenderProvider = ({ children }) => {
   const [renderParams, setRenderParams] = useState({
-    n1: 175,
-    n2: 155,
+    n1: 124,
+    n2: 122,
     color: "#FFCBE1",
-    backgroundColor: "#2D9FED",
+    backgroundColor: "#131517",
     bgEnabled: true,
     xMargin: 5,
-    outsideMargin: 20,
-    distortion: 123,
+    outsideMargin: 0,
+    distortion: 94,
     shouldRecalculate: true,
+    cWidth: 600,
+    cHeight: 600,
+    accountType: "free",
   });
+
+  const { bgEnabled, accountType } = renderParams;
 
   function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
@@ -47,6 +52,19 @@ export const RenderProvider = ({ children }) => {
     }
 
     if (inputType === "number") {
+      if (accountType === "free") {
+        if (inputFieldName === "cWidth") {
+          if (inputFieldValue > 800) {
+            inputFieldValue = 800;
+          }
+        }
+
+        if (inputFieldName === "cHeight") {
+          if (inputFieldValue > 800) {
+            inputFieldValue = 800;
+          }
+        }
+      }
       setRenderParams({
         ...renderParams,
         shouldRecalculate: true,

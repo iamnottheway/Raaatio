@@ -31,6 +31,7 @@ export const ButtonContainer = styled.div`
 export const Canvas = styled.canvas`
   background-color: #fff;
   max-width: 600px;
+  max-height: 600px;
   width: 100%;
   height: 100%;
 

@@ -9,6 +9,7 @@ import {
   ColorSquare,
   Picker,
   RowContainer,
+  InfoLabel,
 } from "./styles";
 
 import { HexColorPicker } from "react-colorful";
@@ -32,6 +33,8 @@ const PropertiesBar = () => {
     outsideMargin,
     distortion,
     color,
+    cWidth,
+    cHeight,
   } = renderParams;
 
   function ColorPicker({ type, label }) {
@@ -80,7 +83,7 @@ const PropertiesBar = () => {
         <ColorPicker type="backgroundColor" label={"Background"} />
       </RowContainer>
 
-      {/* <ItemContainer>
+      <ItemContainer>
         <InputFieldLabel id="bgenable">Show Background</InputFieldLabel>
         <input
           id="bgenable"
@@ -89,7 +92,31 @@ const PropertiesBar = () => {
           data-name="bgEnabled"
           onChange={onChangeInput}
         />
-      </ItemContainer> */}
+      </ItemContainer>
+
+      <RowContainer>
+        <ItemContainer>
+          <InputFieldLabel htmlFor="n1_param">Width</InputFieldLabel>
+          <InputField
+            type="number"
+            id="width"
+            onChange={onChangeInput}
+            value={cWidth}
+            data-name="cWidth"
+          />
+        </ItemContainer>
+
+        <ItemContainer>
+          <InputFieldLabel htmlFor="n2_param">Height</InputFieldLabel>
+          <InputField
+            id="height"
+            type="number"
+            onChange={onChangeInput}
+            value={cHeight}
+            data-name="cHeight"
+          />
+        </ItemContainer>
+      </RowContainer>
 
       <RowContainer>
         <ItemContainer>
@@ -116,7 +143,7 @@ const PropertiesBar = () => {
       </RowContainer>
 
       <RowContainer>
-        <ItemContainer>
+        {/* <ItemContainer>
           <InputFieldLabel htmlFor="margin">Margin</InputFieldLabel>
           <InputField
             id="margin"
@@ -125,7 +152,7 @@ const PropertiesBar = () => {
             value={outsideMargin}
             data-name="outsideMargin"
           />
-        </ItemContainer>
+        </ItemContainer> */}
 
         <ItemContainer>
           <InputFieldLabel htmlFor="distortion">Distortion</InputFieldLabel>
@@ -141,6 +168,10 @@ const PropertiesBar = () => {
       <hr color="#E8E7F1"></hr>
       <Button onClick={randomize}>Randomize</Button>
       <hr color="#E8E7F1"></hr>
+      <InfoLabel>
+        You can only export 800x800 or lower resolutions on the free tier.
+        <a href="/">Upgrade</a>
+      </InfoLabel>
       <Button onClick={downloadPNG} color="#6082FB">
         Download
       </Button>

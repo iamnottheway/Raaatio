@@ -139,6 +139,7 @@ export const InfoLabel = styled.p`
   background-color: #f6e8f6;
   color: #000;
   border: 1px solid #000;
+  font-family: "Inter", sans-serif;
 
   a {
     margin: 0px 5px;

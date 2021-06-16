@@ -45,8 +45,6 @@ async function gridNoise(animationData) {
   let columns = w / (MARGIN * 2 + SPACING);
   let rows = h / (MARGIN * 2 + SPACING);
 
-  console.log("cr:", columns, rows);
-
   NUM_PARTICLES = (ROWS = rows) * (COLS = columns);
 
   let particle = {
@@ -126,15 +124,19 @@ async function gridNoise(animationData) {
 
     // predictable diagonal waves xy = noise.perlin2(p.x / animationData.n1, p.y / animationData.n2)
 
-    let noisex = noise.perlin2(p.x / animationData.n1, p.y / animationData.n2);
-    let noisey = noise.perlin2(p.y / animationData.n1, p.x / animationData.n2);
+    // let noisex = noise.perlin2(p.x / animationData.n1, p.y / animationData.n2);
+    // let noisey = noise.perlin2(p.y / animationData.n1, p.x / animationData.n2);
+
+    // big numbers big waves
+    let noisex = noise.perlin2(p.x / 300, p.y / 100);
+    let noisey = noise.perlin2(p.y / 100, p.x);
 
     p.x = p.x + distortion * noisex;
     p.y = p.y + distortion * noisey;
 
     // for circle in the center
-    // p.x += (p.vx *= DRAG) + (p.ox - p.x) * EASE;
-    // p.y += (p.vy *= DRAG) + (p.oy - p.y) * EASE;
+    p.x += (p.vx *= DRAG) + (p.ox - p.x) * EASE;
+    p.y += (p.vy *= DRAG) + (p.oy - p.y) * EASE;
   }
 
   renderParticles();

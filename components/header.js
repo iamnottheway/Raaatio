@@ -1,14 +1,44 @@
 import styled from "styled-components";
 import Popup from "reactjs-popup";
+import { useState } from "react";
 
 const ActivatePopup = () => {
+  const [key, setKey] = useState(undefined);
+
+  async function activate() {
+    // let key = "3F10ED35-2F384132-BD54EEA6-DBFBE838";
+    let perma = "XPQDt";
+    let endpoint = "https://api.gumroad.com/v2/licenses/verify";
+    let response = await fetch(endpoint, {
+      body: `product_permalink=${perma}&license_key=${key}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: "POST",
+    });
+
+    if (response.status === 200) {
+      let data = await response.json();
+      if (data.success) {
+        alert("activated");
+      }
+    } else {
+      alert("wrong");
+    }
+  }
+
+  function onChangeInput(e) {
+    setKey(e.target.value);
+  }
+
   return (
     <Popup trigger={<ActionButton>Activate Pro</ActionButton>} modal nested>
       {(close) => (
         <PopupContainer>
           <Text>License activation</Text>
-          <InputField placeholder="KEY"></InputField>
+          <InputField placeholder="KEY" onChange={onChangeInput}></InputField>
           <ActionButton
+            onClick={activate}
             style={{ width: "100%", height: 60, margin: "10px 0px" }}
           >
             Activate
@@ -24,21 +54,26 @@ const Pricingpopup = () => {
     <Popup trigger={<ActionButton>Pricing</ActionButton>} modal nested>
       {(close) => (
         <PopupContainer>
-          <Text>Pricing </Text>
-          <Heading>$60 (1 year license)</Heading>
+          <Heading>Go pro for $60/year</Heading>
+          <Text>
+            By buying the pro license you get access to noisewave's pattern
+            generator, including new patterns for 1 year.
+          </Text>
           <List>
             <li>Export at a Higher resolution</li>
             <li>More patterns (soon)</li>
             <li>Personal and Commercial use</li>
           </List>
 
-          <ActionButton
-            bg="#6082FB"
-            color="#fff"
-            style={{ width: "100%", height: 60, margin: "10px 0px" }}
-          >
-            Buy Pro for $60
-          </ActionButton>
+          <a href="https://gumroad.com/l/XPQDt" target="_blank">
+            <ActionButton
+              bg="#6082FB"
+              color="#fff"
+              style={{ width: "100%", height: 60, margin: "10px 0px" }}
+            >
+              Buy Pro for $60
+            </ActionButton>
+          </a>
         </PopupContainer>
       )}
     </Popup>
@@ -47,13 +82,16 @@ const Pricingpopup = () => {
 
 const Heading = styled.h1`
   margin: 0px;
+  font-size: 30px;
+  font-family: "Inter", sans-serif;
 `;
 
 const List = styled.ul`
   margin: 0px;
   font-size: 16px;
   padding: 0px;
-  list-style: none;
+  margin-left: 20px;
+  font-family: "Inter", sans-serif;
 
   li {
     margin: 10px 0;
@@ -62,9 +100,10 @@ const List = styled.ul`
 `;
 
 const Text = styled.p`
-  font-size: 16px;
-  line-height: 140%;
+  font-size: 14px;
+  line-height: 180%;
   margin: 5px 0;
+  font-family: "Inter", sans-serif;
 `;
 
 const InputField = styled.input`
@@ -102,14 +141,16 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <LogoContainer>
-        <p>noiseisnice</p>
+        <img src="/static/noisewave-logo.png" alt="logo"></img>
       </LogoContainer>
       <ButtonContainer>
         <Pricingpopup></Pricingpopup>
         <ActivatePopup></ActivatePopup>
-        <ActionButton bg="#6082FB" color="#fff">
-          Buy Pro for $60
-        </ActionButton>
+        <a href="https://gumroad.com/l/XPQDt" target="_blank">
+          <ActionButton bg="#6082FB" color="#fff">
+            Buy Pro for $60
+          </ActionButton>
+        </a>
       </ButtonContainer>
     </HeaderWrapper>
   );
@@ -118,6 +159,11 @@ export const Header = () => {
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: row;
+
+  img {
+    width: 80px;
+    padding: 6px;
+  }
 `;
 
 const ButtonContainer = styled.div`

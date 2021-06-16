@@ -15,7 +15,7 @@ export const RenderProvider = ({ children }) => {
     shouldRecalculate: true,
     cWidth: 600,
     cHeight: 600,
-    accountType: "free",
+    accountType: "pro",
   });
 
   const { bgEnabled, accountType } = renderParams;
@@ -65,6 +65,22 @@ export const RenderProvider = ({ children }) => {
           }
         }
       }
+
+      // 4k limit
+      if (accountType === "pro") {
+        if (inputFieldName === "cWidth") {
+          if (inputFieldValue >= 3840) {
+            inputFieldValue = 3840;
+          }
+        }
+
+        if (inputFieldName === "cHeight") {
+          if (inputFieldValue > 2160) {
+            inputFieldValue = 2160;
+          }
+        }
+      }
+
       setRenderParams({
         ...renderParams,
         shouldRecalculate: true,

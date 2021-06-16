@@ -22,6 +22,10 @@ const ButtonWrapper = styled.button`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
+
+  :active {
+    box-shadow: 1px 1px 0px rgba(20, 29, 107, 0.1);
+  }
 `;
 
 export default Button;

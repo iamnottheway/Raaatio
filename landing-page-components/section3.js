@@ -66,7 +66,7 @@ const FeatureDescription = styled.p`
 export function Section3() {
   return (
     <Container>
-      <Outer>
+      <Outer style={{ position: "relative" }}>
         <Wrapper>
           <ContentContainer>
             <div>
@@ -89,14 +89,23 @@ export function Section3() {
             })}
           </GridContainer>
         </Wrapper>
+        <PropImage src="/static/landing-page/donut-pink.png"></PropImage>
       </Outer>
     </Container>
   );
 }
 
+const PropImage = styled.img`
+  position: absolute;
+  top: 5%;
+  right: -10%;
+  z-index: 1;
+`;
+
 const Container = styled.div`
   padding: 100px 0;
   background-color: #fffdf6;
+  overflow-x: hidden;
 `;
 
 const GridContainer = styled.div`
@@ -120,6 +129,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: inherit;
+  position: relative;
+  z-index: 20;
 
   display: grid;
   grid-template-rows: repeat(2, 1fr);

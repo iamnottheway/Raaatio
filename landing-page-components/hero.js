@@ -23,7 +23,7 @@ export function Hero() {
             </div>
           </HeroContentContainer>
           <HeroImageContainer>
-            <Image></Image>
+            <Image src="/static/landing-page/hero-image.png"></Image>
           </HeroImageContainer>
         </Wrapper>
       </Outer>
@@ -44,10 +44,9 @@ const HeroWrapper = styled.div`
   }
 `;
 
-const Image = styled.div`
+const Image = styled.img`
   width: 100%;
-  height: 600px;
-  background-color: #aaa;
+  height: auto;
 `;
 
 const ButtonContainer = styled.div`

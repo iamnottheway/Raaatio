@@ -46,6 +46,7 @@ export function Section2() {
 const Container = styled.div`
   padding: 100px 0;
   background-color: #fff6f6;
+  position: relative;
 `;
 
 const Wrapper = styled.div`

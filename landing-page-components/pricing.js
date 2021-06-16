@@ -8,18 +8,18 @@ export function PricingCard({ type = "free" }) {
       title: "Free plan",
       price: "$0 forever",
       features: [
-        "Export resolutions upto 800x800",
+        "Export Resolutions upto 800x800",
         "Personal use only",
         "More patterns (soon)",
       ],
     },
     pro: {
       title: "Pro plan",
-      price: "$60 forever",
+      price: "$60 per year",
       features: [
-        "Export resolutions upto 800x800",
-        "Personal use only",
-        "More patterns (soon)",
+        "High Resolution Export (upto 4k)",
+        "Personal & Commercial use",
+        "Premium patterns (soon)",
       ],
     },
   };
@@ -85,7 +85,7 @@ const PricingCardWrapper = styled.div`
 export function Pricing() {
   return (
     <Container>
-      <Outer>
+      <Outer style={{ position: "relative" }}>
         <Wrapper>
           <ContentContainer>
             <div>
@@ -105,14 +105,23 @@ export function Pricing() {
             <PricingCard type="pro" />
           </PricingContainer2>
         </Wrapper>
+        <PropImage src="/static/landing-page/donut-orange.png"></PropImage>
       </Outer>
     </Container>
   );
 }
 
+const PropImage = styled.img`
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  z-index: 1;
+`;
+
 const Container = styled.div`
   padding: 150px 0;
   background-color: #f4f7ff;
+  overflow-x: hidden;
 `;
 
 const ButtonContainer = styled.div`
@@ -125,6 +134,8 @@ const ButtonContainer = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: relative;
+  z-index: 20;
   width: 100%;
   height: 100%;
   background-color: inherit;
@@ -150,9 +161,8 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: 400px) {
-    grid-template-rows: auto 1fr 1fr;
     grid-template-areas:
-      "content content content ."
+      "content content content content"
       "pricingCard pricingCard pricingCard pricingCard"
       "pricingCard2 pricingCard2 pricingCard2 pricingCard2";
   }

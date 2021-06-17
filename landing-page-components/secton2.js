@@ -24,7 +24,7 @@ export function Section2() {
                 website
               </Title>
               <Description color="#000">
-                NoiseWave gives you the ability to generate unique patterns
+                Formation gives you the ability to generate unique patterns
                 using noise.
               </Description>
               <ButtonContainer>

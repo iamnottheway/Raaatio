@@ -24,12 +24,16 @@ export const RenderProvider = ({ children }) => {
     return Math.random() * (max - min) + min;
   }
 
+  function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   function randomize() {
     setRenderParams({
       ...renderParams,
-      n1: randomNumber(1, 300),
-      n2: randomNumber(1, 300),
-      distortion: randomNumber(1, 300),
+      n1: randomInteger(1, 1000),
+      n2: randomInteger(1, 1000),
+      distortion: randomInteger(1, 1000),
     });
   }
 

@@ -4,12 +4,9 @@ import { Section3 } from "../landing-page-components/section3";
 import { Pricing } from "../landing-page-components/pricing";
 import { Layout } from "../landing-page-components/layout";
 
-export default function Index() {
+export default function PricingPage() {
   return (
     <Layout>
-      <Hero />
-      <Section2 />
-      <Section3 />
       <Pricing />
     </Layout>
   );

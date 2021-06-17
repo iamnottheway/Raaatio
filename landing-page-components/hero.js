@@ -5,35 +5,46 @@ import Button from "../landing-page-components/Button/button";
 export function Hero() {
   return (
     <HeroWrapper>
-      <Outer>
+      <Outer style={{ position: "relative" }}>
         <Wrapper>
           <HeroContentContainer>
             <div>
-              <Title>
+              <Title color="#fff">
                 Generative patterns for your app, website or product branding{" "}
               </Title>
-              <Description>
+              <Description color="#fff">
                 NoiseWave gives you the ability to generate unique patterns
                 using noise.
               </Description>
               <ButtonContainer>
-                <Button label="try the editor"></Button>
-                <Button label="buy for $60" bg="#000"></Button>
+                <Button label="try the editor" path="/app"></Button>
+                <Button label="buy for $60" bg="#fff" textColor="#000"></Button>
               </ButtonContainer>
             </div>
           </HeroContentContainer>
-          <HeroImageContainer>
-            <Image src="/static/landing-page/hero-image.png"></Image>
-          </HeroImageContainer>
         </Wrapper>
+        <PropImage src="/static/landing-page/hero-bg-prop.png"></PropImage>
       </Outer>
     </HeroWrapper>
   );
 }
 
+const PropImage = styled.img`
+  position: absolute;
+  top: -100%;
+  right: -10%;
+  z-index: 0;
+
+  @media (max-width: 600px) {
+    /* width: 500px; */
+    right: -100%;
+  }
+`;
+
 const HeroWrapper = styled.div`
   padding: 200px 0;
-  background-color: #fff;
+  background-color: #000;
+  overflow: hidden;
 
   @media (max-width: 1000px) {
     padding: 20% 0;
@@ -42,11 +53,6 @@ const HeroWrapper = styled.div`
   @media (max-width: 500px) {
     padding: 50px 0;
   }
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: auto;
 `;
 
 const ButtonContainer = styled.div`
@@ -65,6 +71,8 @@ const ButtonContainer = styled.div`
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 3;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -75,7 +83,7 @@ const Wrapper = styled.div`
     grid-template-rows: auto 1fr;
 
     grid-template-areas:
-      "content content . ."
+      "content content content ."
       "image image image image ";
   }
 

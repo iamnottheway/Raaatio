@@ -28,7 +28,7 @@ export function Section2() {
                 using noise.
               </Description>
               <ButtonContainer>
-                <Button label="try the editor"></Button>
+                <Button label="try the editor" path="/app"></Button>
               </ButtonContainer>
             </div>
           </ContentContainer>

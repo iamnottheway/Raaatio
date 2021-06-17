@@ -79,7 +79,7 @@ export function Section3() {
                 can download as many generative patterns as you want.
               </Description>
               <ButtonContainer>
-                <Button label="try the editor"></Button>
+                <Button label="try the editor" path="/app"></Button>
               </ButtonContainer>
             </div>
           </ContentContainer>

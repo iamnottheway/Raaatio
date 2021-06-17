@@ -35,7 +35,12 @@ export function PricingCard({ type = "free" }) {
         </PricingList>
       </div>
       {type === "free" && (
-        <Button label="try the editor" bg="#fff" textColor="#000"></Button>
+        <Button
+          label="try the editor"
+          bg="#fff"
+          textColor="#000"
+          path="/app"
+        ></Button>
       )}
       {type === "pro" && (
         <Button label="Upgrade for $60" bg="#4627FF" textColor="#fff"></Button>
@@ -94,7 +99,7 @@ export function Pricing() {
               </Title>
 
               <ButtonContainer>
-                <Button label="try the editor"></Button>
+                <Button label="try the editor" path="/app"></Button>
               </ButtonContainer>
             </div>
           </ContentContainer>

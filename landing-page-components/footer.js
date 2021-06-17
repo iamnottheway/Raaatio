@@ -4,7 +4,7 @@ import { Outer } from "../landing-page-components/common";
 export const Footer = () => {
   return (
     <FooterWrapper>
-      <Outer>
+      <Outer style={{ position: "relative" }}>
         <Wrapper>
           <List>
             <li>Contact</li>
@@ -14,10 +14,18 @@ export const Footer = () => {
         </Wrapper>
         <hr color="#2C2C2C"></hr>
         <Text>Copyright &#169; Joel Benjamin</Text>
+        <PropImage src="/static/landing-page/noise-footer.png"></PropImage>
       </Outer>
     </FooterWrapper>
   );
 };
+
+const PropImage = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: rotate(12.69deg);
+`;
 
 const List = styled.ul`
   color: #fff;
@@ -36,6 +44,8 @@ const FooterWrapper = styled.div`
   height: auto;
   background-color: #000;
   padding: 30px 0;
+  position: relative;
+  overflow-x: hidden;
 `;
 
 const Text = styled.div`

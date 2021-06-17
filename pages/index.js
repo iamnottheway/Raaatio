@@ -14,3 +14,7 @@ export default function Index() {
     </Layout>
   );
 }
+
+export const config = {
+  unstable_runtimeJS: false,
+};

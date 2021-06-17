@@ -73,6 +73,7 @@ const Wrapper = styled.div`
   height: 100%;
   position: relative;
   z-index: 3;
+  background-color: inherit;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);

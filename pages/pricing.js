@@ -11,3 +11,7 @@ export default function PricingPage() {
     </Layout>
   );
 }
+
+export const config = {
+  unstable_runtimeJS: false,
+};

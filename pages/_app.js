@@ -4,12 +4,13 @@ import { useEffect } from "react";
 const GlobalStyle = createGlobalStyle`
   html,body {
     height: 100%;
-    margin: 0;
+    margin: 0px !important;
     padding: 0;
   }
 
   #__next{
     height: 100%;
+    margin:0;
   }
   
   * {

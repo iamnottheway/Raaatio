@@ -27,7 +27,7 @@ export const Description = styled.p`
 `;
 
 export const Outer = styled.div`
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   max-width: 1800px;
   margin: 0 auto;

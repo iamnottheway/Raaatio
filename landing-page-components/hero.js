@@ -58,7 +58,7 @@ const HeroWrapper = styled.div`
   }
 
   @media (max-width: 500px) {
-    padding: 50px 0;
+    padding: 70px 0;
   }
 `;
 

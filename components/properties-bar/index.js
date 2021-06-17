@@ -35,6 +35,7 @@ const PropertiesBar = () => {
     color,
     cWidth,
     cHeight,
+    accountType,
   } = renderParams;
 
   function ColorPicker({ type, label }) {
@@ -120,7 +121,7 @@ const PropertiesBar = () => {
 
       <RowContainer>
         <ItemContainer>
-          <InputFieldLabel htmlFor="n1_param">noise 1</InputFieldLabel>
+          <InputFieldLabel htmlFor="n1_param">seed 1</InputFieldLabel>
           <InputField
             type="number"
             id="n1_param"
@@ -131,7 +132,7 @@ const PropertiesBar = () => {
         </ItemContainer>
 
         <ItemContainer>
-          <InputFieldLabel htmlFor="n2_param">noise 2</InputFieldLabel>
+          <InputFieldLabel htmlFor="n2_param">seed 2</InputFieldLabel>
           <InputField
             id="n2_param"
             type="number"
@@ -168,10 +169,13 @@ const PropertiesBar = () => {
       <hr color="#E8E7F1"></hr>
       <Button onClick={randomize}>Randomize</Button>
       <hr color="#E8E7F1"></hr>
-      <InfoLabel>
-        You can only export 800x800 or lower resolutions on the free tier.
-        <a href="/">Upgrade</a>
-      </InfoLabel>
+      {accountType === "free" && (
+        <InfoLabel>
+          You can only export 800x800 or lower resolutions on the free tier.
+          <a href="/">Upgrade</a>
+        </InfoLabel>
+      )}
+
       <Button onClick={downloadPNG} color="#6082FB">
         Download
       </Button>

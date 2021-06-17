@@ -5,15 +5,15 @@ import Button from "../landing-page-components/Button/button";
 const Features = [
   {
     title: "Export unlimited patterns",
-    desp: "NoiseWave doesn’t restrict you to a set number of downloads. You can download as many generative patterns as you want.",
+    desp: "Formation doesn’t restrict you to a set number of downloads. You can download as many generative patterns as you want.",
   },
   {
     title: "High Resolution export (pro)",
-    desp: "Looking for High resolution patterns? Fear not, NoiseWave let’s you export Hi-res patterns for upto 4K.",
+    desp: "Looking for High resolution patterns? Fear not, Formation let’s you export Hi-res patterns for up to 4K.",
   },
   {
     title: "Personal and Commercial use (pro)",
-    desp: "Use generative patterns by NoiseWave on personal or commercial projects. Unlimited use and you don’t even need to attribute.",
+    desp: "Use generative patterns by Formation on personal or commercial projects. Unlimited use and you don’t even need to attribute.",
   },
 ];
 
@@ -75,7 +75,7 @@ export function Section3() {
                 website
               </Title>
               <Description color="#686868">
-                NoiseWave doesn’t restrict you to a set number of downloads. You
+                Formation doesn’t restrict you to a set number of downloads. You
                 can download as many generative patterns as you want.
               </Description>
               <ButtonContainer>

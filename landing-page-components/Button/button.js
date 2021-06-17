@@ -32,6 +32,10 @@ const ButtonWrapper = styled.button`
   :active {
     box-shadow: 1px 1px 0px rgba(20, 29, 107, 0.1);
   }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export default Button;

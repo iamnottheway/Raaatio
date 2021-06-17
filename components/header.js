@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import Popup from "reactjs-popup";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { RenderContext } from "../context/contexts";
 
 const ActivatePopup = () => {
   const [key, setKey] = useState(undefined);
+  const context = useContext(RenderContext);
+  const { updateAccount } = context;
 
   async function activate() {
     // let key = "3F10ED35-2F384132-BD54EEA6-DBFBE838";
@@ -20,7 +23,8 @@ const ActivatePopup = () => {
     if (response.status === 200) {
       let data = await response.json();
       if (data.success) {
-        alert("activated");
+        localStorage.setItem("app", JSON.stringify({ isPro: true }));
+        updateAccount("pro");
       }
     } else {
       alert("wrong");
@@ -56,7 +60,7 @@ const Pricingpopup = () => {
         <PopupContainer>
           <Heading>Go pro for $60/year</Heading>
           <Text>
-            By buying the pro license you get access to noisewave's pattern
+            By buying the pro license you get access to Formations's pattern
             generator, including new patterns for 1 year.
           </Text>
           <List>
@@ -138,20 +142,27 @@ const PopupContainer = styled.div`
 `;
 
 export const Header = () => {
+  const context = useContext(RenderContext);
+  const { renderParams } = context;
+  const { accountType } = renderParams;
+
   return (
     <HeaderWrapper>
       <LogoContainer>
         <img src="/static/noisewave-logo.png" alt="logo"></img>
       </LogoContainer>
-      <ButtonContainer>
-        <Pricingpopup></Pricingpopup>
-        <ActivatePopup></ActivatePopup>
-        <a href="https://gumroad.com/l/XPQDt" target="_blank">
-          <ActionButton bg="#6082FB" color="#fff">
-            Buy Pro for $60
-          </ActionButton>
-        </a>
-      </ButtonContainer>
+
+      {accountType === "free" && (
+        <ButtonContainer>
+          <Pricingpopup></Pricingpopup>
+          <ActivatePopup></ActivatePopup>
+          <a href="https://gumroad.com/l/XPQDt" target="_blank">
+            <ActionButton bg="#6082FB" color="#fff">
+              Buy Pro for $60
+            </ActionButton>
+          </a>
+        </ButtonContainer>
+      )}
     </HeaderWrapper>
   );
 };

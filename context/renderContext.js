@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const RenderContext = createContext();
 
@@ -15,17 +15,43 @@ export const RenderProvider = ({ children }) => {
     shouldRecalculate: true,
     cWidth: 600,
     cHeight: 600,
-    accountType: "pro",
+    accountType: null,
   });
 
   const { bgEnabled, accountType } = renderParams;
 
-  function randomNumber(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-
   function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  useEffect(() => {
+    let data = localStorage.getItem("app");
+    if (data) {
+      let parsed = JSON.parse(data);
+      if (parsed.isPro) {
+        setRenderParams({
+          ...renderParams,
+          accountType: "pro",
+        });
+      } else {
+        setRenderParams({
+          ...renderParams,
+          accountType: "free",
+        });
+      }
+    } else {
+      setRenderParams({
+        ...renderParams,
+        accountType: "free",
+      });
+    }
+  }, []);
+
+  function updateAccount(type) {
+    setRenderParams({
+      ...renderParams,
+      accountType: type,
+    });
   }
 
   function randomize() {
@@ -98,6 +124,7 @@ export const RenderProvider = ({ children }) => {
     onChangeInput,
     randomize,
     updateProperties,
+    updateAccount,
   };
   return (
     <RenderContext.Provider value={value}>{children}</RenderContext.Provider>

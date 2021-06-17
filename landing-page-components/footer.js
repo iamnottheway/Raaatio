@@ -45,7 +45,7 @@ const FooterWrapper = styled.div`
   background-color: #000;
   padding: 30px 0;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 const Text = styled.div`

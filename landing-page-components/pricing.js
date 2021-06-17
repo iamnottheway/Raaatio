@@ -16,9 +16,9 @@ export function PricingCard({ type = "free" }) {
     },
     pro: {
       title: "Pro plan",
-      price: "$60 per year",
+      price: "$60/year",
       features: [
-        "High Resolution Export (upto 4k)",
+        "High Resolution Export (up to 4k)",
         "Personal & Commercial use",
         "Premium patterns (soon)",
       ],
@@ -49,6 +49,7 @@ export function PricingCard({ type = "free" }) {
           bg="#4627FF"
           textColor="#fff"
           path={links.proLink}
+          self={false}
         ></Button>
       )}
     </PricingCardWrapper>
@@ -67,9 +68,10 @@ const PricingHeading = styled.h2`
 `;
 
 const PricingList = styled.ul`
-  list-style: none;
+  /* list-style: none; */
   margin: 0px;
   padding: 0;
+  padding-left: 16px;
 
   li {
     margin: 10px 0;

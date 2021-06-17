@@ -4,14 +4,14 @@ import Button from "../landing-page-components/Button/button";
 
 export function Section2() {
   let images = [
-    "/static/landing-page/1.png",
-    "/static/landing-page/2.png",
-    "/static/landing-page/3.png",
-    "/static/landing-page/4.png",
-    "/static/landing-page/1.png",
-    "/static/landing-page/2.png",
-    "/static/landing-page/3.png",
-    "/static/landing-page/4.png",
+    "/static/landing-page/img1.png",
+    "/static/landing-page/img2.png",
+    "/static/landing-page/img3.png",
+    "/static/landing-page/img4.png",
+    "/static/landing-page/img5.png",
+    "/static/landing-page/img6.png",
+    "/static/landing-page/img7.png",
+    "/static/landing-page/img8.png",
   ];
   return (
     <Container>
@@ -94,7 +94,7 @@ const ContentContainer = styled.div`
 
 const ImageItem = styled.img`
   width: 100%;
-  height: 450px;
+  height: 400px;
   background-color: #aaa;
   overflow: hidden;
 `;

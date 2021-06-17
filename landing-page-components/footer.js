@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { Outer } from "../landing-page-components/common";
+import MailChimpForm from "./form/mailchimp-form";
+import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 export const Footer = () => {
+  let url =
+    "https://crossit.us19.list-manage.com/subscribe/post?u=21edd8517b1df818e5f38c6f5&amp;id=0117980746";
+
   return (
     <FooterWrapper>
       <Outer style={{ position: "relative" }}>
@@ -11,6 +16,16 @@ export const Footer = () => {
             <li>Privacy Policy</li>
             <li>Terms and Condition</li>
           </List>
+          <MailchimpSubscribe
+            url={url}
+            render={({ subscribe, status, message }) => (
+              <MailChimpForm
+                status={status}
+                message={message}
+                onValidated={(formData) => subscribe(formData)}
+              />
+            )}
+          />
         </Wrapper>
         <hr color="#2C2C2C"></hr>
         <Text>Copyright &#169; Joel Benjamin</Text>
@@ -60,5 +75,10 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
-  grid-gap: 30px;
+  justify-content: space-between;
+  grid-gap: 5px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;

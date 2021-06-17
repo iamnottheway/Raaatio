@@ -15,6 +15,6 @@ export default function Index() {
   );
 }
 
-export const config = {
-  unstable_runtimeJS: false,
-};
+// export const config = {
+//   unstable_runtimeJS: false,
+// };

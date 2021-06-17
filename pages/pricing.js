@@ -12,6 +12,6 @@ export default function PricingPage() {
   );
 }
 
-export const config = {
-  unstable_runtimeJS: false,
-};
+// export const config = {
+//   unstable_runtimeJS: false,
+// };

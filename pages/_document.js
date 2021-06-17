@@ -33,7 +33,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>noisewave - A very nice noise pattern generator</title>
           <meta
             name="title"
             content="noisewave - A very nice noise pattern generator"

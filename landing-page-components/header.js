@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Outer } from "../landing-page-components/common";
 import Button from "./Button/button";
-import Link from "next/link";
+import { links } from "./Button/utitls";
 
 export const Header = ({ textColor = "#000" }) => {
   return (
@@ -16,7 +16,12 @@ export const Header = ({ textColor = "#000" }) => {
               textColor="#000"
               path="/pricing"
             ></Button>
-            <Button label="buy for $60" bg="#000"></Button>
+            <Button
+              label="buy for $60"
+              bg="#000"
+              path={links.proLink}
+              self={false}
+            ></Button>
           </LinkContainer>
         </Container>
       </Outer>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Title, Description, Outer } from "../landing-page-components/common";
 import Button from "../landing-page-components/Button/button";
+import { links } from "./Button/utitls";
 
 export function Hero() {
   return (
@@ -18,7 +19,13 @@ export function Hero() {
               </Description>
               <ButtonContainer>
                 <Button label="try the editor" path="/app"></Button>
-                <Button label="buy for $60" bg="#fff" textColor="#000"></Button>
+                <Button
+                  label="buy for $60"
+                  bg="#fff"
+                  textColor="#000"
+                  path={links.proLink}
+                  self={false}
+                ></Button>
               </ButtonContainer>
             </div>
           </HeroContentContainer>

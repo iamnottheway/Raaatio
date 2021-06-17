@@ -1,22 +1,14 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-const Button = ({ label, textColor, bg, shadow, path }) => {
+const Button = ({ label, textColor, bg, shadow, path, self = true }) => {
   return (
     <>
-      {path ? (
-        <Link href={path}>
-          <ButtonWrapper textColor={textColor} bg={bg} shadow={shadow}>
-            {label ? label : "text"}
-          </ButtonWrapper>
-        </Link>
-      ) : (
-        <a href="https://gum.co/XPQDt" target="_blank">
-          <ButtonWrapper textColor={textColor} bg={bg} shadow={shadow}>
-            {label ? label : "text"}
-          </ButtonWrapper>
-        </a>
-      )}
+      <a href={path} target={self ? "_self" : "_blank"}>
+        <ButtonWrapper textColor={textColor} bg={bg} shadow={shadow}>
+          {label ? label : "text"}
+        </ButtonWrapper>
+      </a>
     </>
   );
 };

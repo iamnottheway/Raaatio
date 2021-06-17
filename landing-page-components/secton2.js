@@ -33,8 +33,8 @@ export function Section2() {
             </div>
           </ContentContainer>
           <GridContainer>
-            {images.map((x) => {
-              return <ImageItem src={x} />;
+            {images.map((x, i) => {
+              return <ImageItem key={i} src={x} />;
             })}
           </GridContainer>
         </Wrapper>

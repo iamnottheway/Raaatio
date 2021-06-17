@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Title, Description, Outer } from "../landing-page-components/common";
+import { Title, Outer } from "../landing-page-components/common";
 import Button from "../landing-page-components/Button/button";
+import { links } from "./Button/utitls";
 
 export function PricingCard({ type = "free" }) {
   let data = {
@@ -43,7 +44,12 @@ export function PricingCard({ type = "free" }) {
         ></Button>
       )}
       {type === "pro" && (
-        <Button label="Upgrade for $60" bg="#4627FF" textColor="#fff"></Button>
+        <Button
+          label="Upgrade for $60"
+          bg="#4627FF"
+          textColor="#fff"
+          path={links.proLink}
+        ></Button>
       )}
     </PricingCardWrapper>
   );

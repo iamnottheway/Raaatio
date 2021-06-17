@@ -84,8 +84,8 @@ export function Section3() {
             </div>
           </ContentContainer>
           <GridContainer>
-            {Features.map((x) => {
-              return <FeatureItem title={x.title} desp={x.desp} />;
+            {Features.map((x, i) => {
+              return <FeatureItem title={x.title} desp={x.desp} key={i} />;
             })}
           </GridContainer>
         </Wrapper>

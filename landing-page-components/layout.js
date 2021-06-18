@@ -6,7 +6,7 @@ export const Layout = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Formation - A very nice noise pattern generator</title>
+        <title>Raaatio - A Generative noise pattern generator</title>
       </Head>
       <Header textColor="#fff" />
       {children}

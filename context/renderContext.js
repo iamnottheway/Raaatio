@@ -57,8 +57,8 @@ export const RenderProvider = ({ children }) => {
   function randomize() {
     setRenderParams({
       ...renderParams,
-      n1: randomInteger(1, 1000),
-      n2: randomInteger(1, 1000),
+      n1: randomInteger(1, 300),
+      n2: randomInteger(1, 300),
       distortion: randomInteger(1, 1000),
     });
   }

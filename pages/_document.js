@@ -35,21 +35,21 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="title"
-            content="Formation - A very nice noise pattern generator"
+            content="Raaatio - A very nice noise pattern generator"
           />
           <meta
             name="description"
-            content="Formation - A very nice noise pattern generator"
+            content="Raaatio - A very nice noise pattern generator"
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://noiseisnice.com" />
           <meta
             property="og:title"
-            content="Formation - A very nice noise pattern generator"
+            content="Raaatio - A very nice noise pattern generator"
           />
           <meta
             property="og:description"
-            content="Formation - A very nice noise pattern generator"
+            content="Raaatio - A very nice noise pattern generator"
           />
           <meta
             property="og:image"

@@ -60,7 +60,7 @@ const Pricingpopup = () => {
         <PopupContainer>
           <Heading>Go pro for $60/year</Heading>
           <Text>
-            By buying the pro license you get access to Formations's pattern
+            By buying the pro license you get access to Raaatio's pattern
             generator, including new patterns for 1 year.
           </Text>
           <List>

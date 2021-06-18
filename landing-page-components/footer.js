@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Outer } from "../landing-page-components/common";
 import MailChimpForm from "./form/mailchimp-form";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
+import Link from "next/link";
 
 export const Footer = () => {
   let url =
@@ -12,9 +13,16 @@ export const Footer = () => {
       <Outer style={{ position: "relative" }}>
         <Wrapper>
           <List>
-            <li>Contact</li>
-            <li>Privacy Policy</li>
-            <li>Terms and Condition</li>
+            <li>
+              <a href="mailto:hey@jbnj.lol">Contact</a>
+            </li>
+
+            <li>
+              <Link href="/privacy">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="/terms">Terms and Condition</Link>
+            </li>
           </List>
           <MailchimpSubscribe
             url={url}
@@ -51,6 +59,11 @@ const List = styled.ul`
 
   li {
     margin: 10px 0;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
   }
 `;
 

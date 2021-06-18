@@ -8,7 +8,9 @@ export const Header = ({ textColor = "#000" }) => {
     <HeaderWrapper>
       <Outer>
         <Container>
-          <LogoContainer></LogoContainer>
+          <LogoContainer>
+            <img src="/static/landing-page/logo.png"></img>
+          </LogoContainer>
           <LinkContainer>
             <Button
               label="Pricing"
@@ -46,9 +48,13 @@ const Text = styled.p`
 `;
 
 const LogoContainer = styled.div`
-  width: 200px;
+  width: auto;
   height: 100%;
-  background: #aaa;
+  padding: 20px 0;
+
+  img {
+    width: 60px;
+  }
 `;
 
 const HeaderWrapper = styled.div`
@@ -56,7 +62,7 @@ const HeaderWrapper = styled.div`
   height: auto;
   /* background-color: #fff; */
   padding: 10px 0;
-  position: fixed;
+  position: absolute;
   top: 0px;
   z-index: 100;
 `;

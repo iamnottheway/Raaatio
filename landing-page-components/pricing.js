@@ -7,15 +7,18 @@ export function PricingCard({ type = "free" }) {
   let data = {
     free: {
       title: "Free plan",
+      desp: "Perfect for personal websites",
       price: "$0 forever",
+
       features: [
-        "Export Resolutions upto 800x800",
+        "Export Resolutions up to 800x800",
         "Personal use only",
         "More patterns (soon)",
       ],
     },
     pro: {
       title: "Pro plan",
+      desp: "Perfect if you're looking for high quality patterns to use in client projects or business",
       price: "$60/year",
       features: [
         "High Resolution Export (up to 4k)",
@@ -29,6 +32,7 @@ export function PricingCard({ type = "free" }) {
       <div>
         <PricingTitle>{data[type].title}</PricingTitle>
         <PricingHeading>{data[type].price}</PricingHeading>
+        <Text>{data[type].desp}</Text>
         <PricingList>
           {data[type].features.map((x) => {
             return <li>{x}</li>;
@@ -55,6 +59,13 @@ export function PricingCard({ type = "free" }) {
     </PricingCardWrapper>
   );
 }
+
+const Text = styled.p`
+  font-size: 14px;
+  line-height: 180%;
+  margin: 5px 0;
+  font-family: "Inter", sans-serif;
+`;
 
 const PricingTitle = styled.h1`
   font-size: 20px;
@@ -85,10 +96,10 @@ const PricingCardWrapper = styled.div`
   border: 1px solid #000000;
   box-shadow: 10px 10px 0px rgba(30, 29, 96, 0.45);
   border-radius: 2px;
-  padding: 50px 20px;
-  padding-top: 100px;
+  padding: 30px 20px;
   width: 100%;
-  height: 450px;
+  max-height: 500px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

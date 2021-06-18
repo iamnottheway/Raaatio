@@ -3,7 +3,12 @@ import { Title, Description, Outer } from "../landing-page-components/common";
 import Button from "../landing-page-components/Button/button";
 import { links } from "./Button/utitls";
 
+import MailChimpForm from "./form/mailchimp-form";
+import MailchimpSubscribe from "react-mailchimp-subscribe";
+
 export function Hero() {
+  let url =
+    "https://crossit.us19.list-manage.com/subscribe/post?u=21edd8517b1df818e5f38c6f5&amp;id=0117980746";
   return (
     <HeroWrapper>
       <Outer style={{ position: "relative" }}>
@@ -14,7 +19,7 @@ export function Hero() {
                 Generative patterns for your app, website or product branding{" "}
               </Title>
               <Description color="#fff">
-                NoiseWave gives you the ability to generate unique patterns
+                Formation gives you the ability to generate unique patterns
                 using noise.
               </Description>
               <ButtonContainer>
@@ -27,6 +32,16 @@ export function Hero() {
                   self={false}
                 ></Button>
               </ButtonContainer>
+              {/* <MailchimpSubscribe
+                url={url}
+                render={({ subscribe, status, message }) => (
+                  <MailChimpForm
+                    status={status}
+                    message={message}
+                    onValidated={(formData) => subscribe(formData)}
+                  />
+                )}
+              /> */}
             </div>
           </HeroContentContainer>
         </Wrapper>

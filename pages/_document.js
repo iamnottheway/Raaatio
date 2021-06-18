@@ -35,37 +35,34 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="title"
-            content="Raaatio - A very nice noise pattern generator"
+            content="Raaatio - A Generative noise pattern generator"
           />
           <meta
             name="description"
-            content="Raaatio - A very nice noise pattern generator"
+            content="Raaatio - A Generative noise pattern generator"
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://raaatio.com" />
           <meta
             property="og:title"
-            content="Raaatio - A very nice noise pattern generator"
+            content="Raaatio - A Generative noise pattern generator"
           />
           <meta
             property="og:description"
-            content="Raaatio - A very nice noise pattern generator"
+            content="Raaatio - A Generative noise pattern generator"
           />
-          <meta property="og:image" content="https://raaatio.com/cover.png" />
+          <meta property="og:image" content="/static/cover.png" />
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://raaatio.com" />
           <meta
             property="twitter:title"
-            content="Raaatio - A very nice noise pattern generator"
+            content="Raaatio - A Generative noise pattern generator"
           />
           <meta
             property="twitter:description"
-            content="Raaatio - A very nice noise pattern generator"
+            content="Raaatio - A Generative noise pattern generator"
           />
-          <meta
-            property="twitter:image"
-            content="https://raaatio.com/cover.png"
-          />
+          <meta property="twitter:image" content="/static/cover.png" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Popup from "reactjs-popup";
 import { useState, useContext } from "react";
 import { RenderContext } from "../context/contexts";
+import Link from "next/link";
 
 const ActivatePopup = () => {
   const [key, setKey] = useState(undefined);
@@ -149,7 +150,9 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <LogoContainer>
-        <img src="/static/noisewave-logo.png" alt="logo"></img>
+        <Link href="/">
+          <img src="/static/landing-page/logo.png" alt="logo"></img>
+        </Link>
       </LogoContainer>
 
       {accountType === "free" && (
@@ -172,8 +175,9 @@ const LogoContainer = styled.div`
   flex-direction: row;
 
   img {
-    width: 80px;
+    width: 50px;
     padding: 6px;
+    cursor: pointer;
   }
 `;
 

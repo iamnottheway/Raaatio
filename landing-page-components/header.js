@@ -2,15 +2,18 @@ import styled from "styled-components";
 import { Outer } from "../landing-page-components/common";
 import Button from "./Button/button";
 import { links } from "./Button/utitls";
+import Link from "next/link";
 
 export const Header = ({ textColor = "#000" }) => {
   return (
     <HeaderWrapper>
       <Outer>
         <Container>
-          <LogoContainer>
-            <img src="/static/landing-page/logo.png"></img>
-          </LogoContainer>
+          <Link href="/">
+            <LogoContainer>
+              <img src="/static/landing-page/logo.png"></img>
+            </LogoContainer>
+          </Link>
           <LinkContainer>
             <Button
               label="Pricing"
@@ -51,6 +54,7 @@ const LogoContainer = styled.div`
   width: auto;
   height: 100%;
   padding: 20px 0;
+  cursor: pointer;
 
   img {
     width: 40px;

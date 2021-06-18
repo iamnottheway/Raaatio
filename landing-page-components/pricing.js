@@ -146,6 +146,7 @@ const Container = styled.div`
   padding: 150px 0;
   background-color: #f4f7ff;
   overflow-x: hidden;
+  height: 100%;
 `;
 
 const ButtonContainer = styled.div`

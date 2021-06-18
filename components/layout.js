@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5eff5;
+  background-color: #f0f0f0;
   background-repeat: repeat;
   background-image: url("/static/grid.svg");
 

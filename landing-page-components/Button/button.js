@@ -4,11 +4,19 @@ import Link from "next/link";
 const Button = ({ label, textColor, bg, shadow, path, self = true }) => {
   return (
     <>
-      <a href={path} target={self ? "_self" : "_blank"}>
-        <ButtonWrapper textColor={textColor} bg={bg} shadow={shadow}>
-          {label ? label : "text"}
-        </ButtonWrapper>
-      </a>
+      {self ? (
+        <Link href={path}>
+          <ButtonWrapper textColor={textColor} bg={bg} shadow={shadow}>
+            {label ? label : "text"}
+          </ButtonWrapper>
+        </Link>
+      ) : (
+        <a href={path} target={self ? "_self" : "_blank"}>
+          <ButtonWrapper textColor={textColor} bg={bg} shadow={shadow}>
+            {label ? label : "text"}
+          </ButtonWrapper>
+        </a>
+      )}
     </>
   );
 };

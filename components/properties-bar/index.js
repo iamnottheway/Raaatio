@@ -121,7 +121,7 @@ const PropertiesBar = () => {
 
       <RowContainer>
         <ItemContainer>
-          <InputFieldLabel htmlFor="n1_param">seed 1</InputFieldLabel>
+          <InputFieldLabel htmlFor="n1_param">seed x</InputFieldLabel>
           <InputField
             type="number"
             id="n1_param"
@@ -132,7 +132,7 @@ const PropertiesBar = () => {
         </ItemContainer>
 
         <ItemContainer>
-          <InputFieldLabel htmlFor="n2_param">seed 2</InputFieldLabel>
+          <InputFieldLabel htmlFor="n2_param">seed y</InputFieldLabel>
           <InputField
             id="n2_param"
             type="number"

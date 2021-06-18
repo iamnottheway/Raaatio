@@ -41,6 +41,16 @@ export default class MyDocument extends Document {
             name="description"
             content="Raaatio - A Generative noise pattern generator"
           />
+
+          <meta
+            name="title"
+            content="Raaatio - A Generative noise pattern generator"
+          />
+          <meta
+            name="description"
+            content="Raaatio helps you create cool generative noise patterns for your website, product branding, or 3D projects."
+          />
+
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://raaatio.com" />
           <meta
@@ -49,12 +59,13 @@ export default class MyDocument extends Document {
           />
           <meta
             property="og:description"
-            content="Raaatio - A Generative noise pattern generator"
+            content="Raaatio helps you create cool generative noise patterns for your website, product branding, or 3D projects."
           />
           <meta
             property="og:image"
             content="https://raaatio.com/static/cover.png"
           />
+
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://raaatio.com" />
           <meta
@@ -63,12 +74,13 @@ export default class MyDocument extends Document {
           />
           <meta
             property="twitter:description"
-            content="Raaatio - A Generative noise pattern generator"
+            content="Raaatio helps you create cool generative noise patterns for your website, product branding, or 3D projects."
           />
           <meta
             property="twitter:image"
             content="https://raaatio.com/static/cover.png"
           />
+
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"

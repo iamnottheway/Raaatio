@@ -51,7 +51,10 @@ export default class MyDocument extends Document {
             property="og:description"
             content="Raaatio - A Generative noise pattern generator"
           />
-          <meta property="og:image" content="/static/cover.png" />
+          <meta
+            property="og:image"
+            content="https://raaatio.com/static/cover.png"
+          />
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://raaatio.com" />
           <meta
@@ -62,7 +65,10 @@ export default class MyDocument extends Document {
             property="twitter:description"
             content="Raaatio - A Generative noise pattern generator"
           />
-          <meta property="twitter:image" content="/static/cover.png" />
+          <meta
+            property="twitter:image"
+            content="https://raaatio.com/static/cover.png"
+          />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"

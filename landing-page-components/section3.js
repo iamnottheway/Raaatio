@@ -5,15 +5,15 @@ import Button from "../landing-page-components/Button/button";
 const Features = [
   {
     title: "Export unlimited patterns",
-    desp: "Formation doesn’t restrict you to a set number of downloads. You can download as many generative patterns as you want.",
+    desp: "Raaatio doesn’t restrict you to a set number of downloads. You can download as many generative patterns as you please.",
   },
   {
     title: "High Resolution export (pro)",
-    desp: "Looking for High resolution patterns? Fear not, Formation let’s you export Hi-res patterns for up to 4K.",
+    desp: "Looking for High resolution patterns? Fear not, Raaatio let’s you export noise patterns  up to 4K.",
   },
   {
     title: "Personal and Commercial use (pro)",
-    desp: "Use generative patterns by Formation on personal or commercial projects. Unlimited use and you don’t even need to attribute.",
+    desp: "Use generative patterns by Raaatio on personal or commercial projects. Unlimited use and you don’t even need to attribute.",
   },
 ];
 
@@ -71,12 +71,12 @@ export function Section3() {
           <ContentContainer>
             <div>
               <Title color="#000">
-                Add unique pattern combinations to your product branding or
-                website
+                Generate unique patterns by simply changing the seed
               </Title>
               <Description color="#686868">
-                Formation doesn’t restrict you to a set number of downloads. You
-                can download as many generative patterns as you want.
+                Raaatio can generate unlimited unique patterns by simply
+                changing the seed. You can then change the size of the canvas to
+                export a higher resolution.
               </Description>
               <ButtonContainer>
                 <Button label="try the editor" path="/app"></Button>

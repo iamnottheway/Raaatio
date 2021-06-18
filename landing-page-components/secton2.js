@@ -20,12 +20,11 @@ export function Section2() {
           <ContentContainer>
             <div>
               <Title color="#000">
-                Add unique pattern combinations to your product branding or
-                website
+                Export High Resolution patterns, make interesting designs
               </Title>
               <Description color="#000">
-                Formation gives you the ability to generate unique patterns
-                using noise.
+                Raaatio lets you export unlimited High resolution patterns that
+                you can use in your projects.
               </Description>
               <ButtonContainer>
                 <Button label="try the editor" path="/app"></Button>

@@ -16,11 +16,11 @@ export function Hero() {
           <HeroContentContainer>
             <div>
               <Title color="#fff">
-                Generative patterns for your app, website or product branding{" "}
+                Generative noise pattern generator for everybody
               </Title>
               <Description color="#fff">
-                Formation gives you the ability to generate unique patterns
-                using noise.
+                Raaatio helps you create cool generative noise patterns for your
+                website, product branding or 3D projects.
               </Description>
               <ButtonContainer>
                 <Button label="try the editor" path="/app"></Button>

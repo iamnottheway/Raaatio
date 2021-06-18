@@ -114,7 +114,7 @@ export function Pricing() {
           <ContentContainer>
             <div>
               <Title color="#000">
-                Stop waiting <br></br> try the editor out
+                Not sure if you wanna buy it yet? Try the generator first
               </Title>
 
               <ButtonContainer>

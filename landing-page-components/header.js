@@ -53,7 +53,7 @@ const LogoContainer = styled.div`
   padding: 20px 0;
 
   img {
-    width: 60px;
+    width: 40px;
   }
 `;
 

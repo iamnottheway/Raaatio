@@ -14,6 +14,7 @@ import {
 
 import { HexColorPicker } from "react-colorful";
 import { RenderContext, ExportContext } from "../../context/contexts";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const PropertiesBar = () => {
   const context = useContext(RenderContext);
@@ -60,17 +61,19 @@ const PropertiesBar = () => {
         </div>
         {isOpenColorPicker[type] && (
           <div className="popover">
-            <HexColorPicker
-              color={colors[type]}
-              id={type}
-              onChange={(color) => {
-                updateProperties({
-                  ...renderParams,
-                  shouldRecalculate: true,
-                  [type]: color,
-                });
-              }}
-            />
+            <OutsideClickHandler onOutsideClick={onColorSwatchClick}>
+              <HexColorPicker
+                color={colors[type]}
+                id={type}
+                onChange={(color) => {
+                  updateProperties({
+                    ...renderParams,
+                    shouldRecalculate: true,
+                    [type]: color,
+                  });
+                }}
+              />
+            </OutsideClickHandler>
           </div>
         )}
       </Picker>

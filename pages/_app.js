@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import * as gtag from "../lib/gtag";
 
 const GlobalStyle = createGlobalStyle`
   html,body {
@@ -20,6 +22,8 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App({ Component, pageProps }) {
+  const router = useRouter();
+
   useEffect(() => {
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
@@ -37,6 +41,17 @@ function App({ Component, pageProps }) {
       });
     }
   }, []);
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <>
       <GlobalStyle />

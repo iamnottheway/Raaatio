@@ -34,8 +34,8 @@ export function PricingCard({ type = "free" }) {
         <PricingHeading>{data[type].price}</PricingHeading>
         <Text>{data[type].desp}</Text>
         <PricingList>
-          {data[type].features.map((x) => {
-            return <li>{x}</li>;
+          {data[type].features.map((x, i) => {
+            return <li key={i}>{x}</li>;
           })}
         </PricingList>
       </div>

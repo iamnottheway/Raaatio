@@ -9,6 +9,10 @@ self.addEventListener("message", async (event) => {
     gridNoise(event.data.animData, mainCanvas);
   }
 
+  if (event.data.type === "wave_pattern") {
+    wavePattern(event.data.animData, mainCanvas);
+  }
+
   if (event.data.type === "download") {
     const ctx = mainCanvas.getContext("2d");
   }
@@ -123,6 +127,75 @@ async function gridNoise(animationData, canvas) {
   }
 
   renderParticles();
+}
+
+async function wavePattern(animationData, canvas) {
+  let dotMargin = 0;
+  let dotDiameter = 1;
+  let dotRadius = dotDiameter / 2;
+  let xMargin = animationData.xMargin;
+  let distortion = animationData.distortion;
+  let numRows = 100;
+  let numCols = 100;
+  let outsideMargin = 1; //animationData.outsideMargin;
+  let SPACING = 4;
+  let MARGIN = 0;
+
+  let exportSize = 1;
+  const ctx = canvas.getContext("2d");
+
+  w = canvas.width = animationData.cWidth * exportSize;
+  h = canvas.height = animationData.cHeight * exportSize;
+
+  numCols = w / (MARGIN * 2 + SPACING);
+  numRows = h / (MARGIN * 2 + SPACING);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  if (animationData.bgEnabled) {
+    ctx.fillStyle = animationData.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  let c = "#fff"; //"#fff"; //`hsl(${hue},${sat}%,50%)`;
+  ctx.fillStyle = c;
+
+  let p = new Path2D();
+
+  let colorsList = ["#fc0d7d", "#fc0d31", "#fc0de4", "#550dfc"];
+
+  let v = numRows * numCols;
+  let v2 = 0; //numRows * numCols;
+
+  if (animationData.shouldRecalculate) {
+    for (let i = outsideMargin; i < numRows - outsideMargin; i++) {
+      for (let j = outsideMargin; j < numCols - outsideMargin; j++) {
+        let x =
+          j * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
+        let y =
+          i * (dotDiameter + xMargin) + dotMargin + xMargin / 2 + dotRadius;
+
+        let noisex = noise.perlin2(x / animationData.n1, y / animationData.n2);
+        let noisey = noise.perlin2(x / animationData.n1, y / animationData.n1);
+
+        let x2 = x * noisex;
+        let y2 = y + distortion * noisey;
+
+        let c = colorsList[Math.floor(Math.random() * colorsList.length)];
+
+        ctx.strokeStyle = c;
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.quadraticCurveTo(v, v2, animationData.n1, animationData.n2);
+        ctx.stroke();
+        v = v - 10;
+        v2 = v2 + 10;
+      }
+    }
+  }
+
+  ctx.fill(p);
 }
 
 // using sine will generate other

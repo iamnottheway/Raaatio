@@ -46,7 +46,8 @@ const CanvasComponent = () => {
     if (offscreenCanvasRef && workerRef && offscreenSupported) {
       const { current: worker } = workerRef;
 
-      worker.postMessage({ type: "run_canvas", animData: renderParams });
+      // worker.postMessage({ type: "run_canvas", animData: renderParams });
+      worker.postMessage({ type: "wave_pattern", animData: renderParams });
     } else {
       const { current: canvas } = canvasRef;
 

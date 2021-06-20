@@ -27,7 +27,7 @@ export function Section2() {
                 you can use in your projects.
               </Description>
               <ButtonContainer>
-                <Button label="try the editor" path="/app"></Button>
+                <Button label="try for free" path="/app"></Button>
               </ButtonContainer>
             </div>
           </ContentContainer>

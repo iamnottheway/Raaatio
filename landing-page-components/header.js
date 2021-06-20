@@ -15,6 +15,7 @@ export const Header = ({ textColor = "#000" }) => {
             </LogoContainer>
           </Link>
           <LinkContainer>
+            <Button label="FAQ" bg="#fff" textColor="#000" path="/faq"></Button>
             <Button
               label="Pricing"
               bg="#fff"
@@ -39,6 +40,10 @@ const LinkContainer = styled.div`
   flex-direction: row;
   align-items: center;
   grid-gap: 20px;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const Text = styled.p`
@@ -76,7 +81,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media (max-width: 500px) {
+  /* @media (max-width: 500px) {
     display: none;
-  }
+  } */
 `;

@@ -1,12 +1,12 @@
-import { Pricing } from "../landing-page-components/pricing";
+import FaqSection from "../landing-page-components/faq";
 import { Layout } from "../landing-page-components/layout";
 import styled from "styled-components";
 
-export default function PricingPage() {
+export default function Faq() {
   return (
     <Layout>
       <Wrapper>
-        <Pricing />
+        <FaqSection />
       </Wrapper>
     </Layout>
   );
@@ -14,9 +14,10 @@ export default function PricingPage() {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f4f7ff;
+  padding: 10%;
 `;

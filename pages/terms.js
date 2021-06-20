@@ -6,7 +6,7 @@ export default function Terms() {
       <h2>1. Terms</h2>
 
       <p>
-        By accessing this Website, accessible from https://ottoapp.me, you are
+        By accessing this Website, accessible from https://raaatio.com, you are
         agreeing to be bound by these Website Terms and Conditions of Use and
         agree that you are responsible for the agreement with any applicable
         local laws. If you disagree with any of these terms, you are prohibited
@@ -18,7 +18,7 @@ export default function Terms() {
 
       <p>
         Permission is granted to temporarily download one copy of the materials
-        on ottoapp.me's Website for personal, non-commercial transitory viewing
+        on raaatio.com's Website for personal, non-commercial transitory viewing
         only. This is the grant of a license, not a transfer of title, and under
         this license you may not:
       </p>
@@ -30,7 +30,7 @@ export default function Terms() {
           display;
         </li>
         <li>
-          attempt to reverse engineer any software contained on ottoapp.me's
+          attempt to reverse engineer any software contained on raaatio.com's
           Website;
         </li>
         <li>
@@ -44,7 +44,7 @@ export default function Terms() {
       </ul>
 
       <p>
-        This will let ottoapp.me to terminate upon violations of any of these
+        This will let raaatio.com to terminate upon violations of any of these
         restrictions. Upon termination, your viewing right will also be
         terminated and you should destroy any downloaded materials in your
         possession whether it is printed or electronic format. These Terms of
@@ -62,50 +62,50 @@ export default function Terms() {
       <h2>3. Disclaimer</h2>
 
       <p>
-        All the materials on ottoapp.me’s Website are provided "as is".
-        ottoapp.me makes no warranties, may it be expressed or implied,
-        therefore negates all other warranties. Furthermore, ottoapp.me does not
-        make any representations concerning the accuracy or reliability of the
-        use of the materials on its Website or otherwise relating to such
+        All the materials on raaatio.com’s Website are provided "as is".
+        raaatio.com makes no warranties, may it be expressed or implied,
+        therefore negates all other warranties. Furthermore, raaatio.com does
+        not make any representations concerning the accuracy or reliability of
+        the use of the materials on its Website or otherwise relating to such
         materials or any sites linked to this Website.
       </p>
 
       <h2>4. Limitations</h2>
 
       <p>
-        ottoapp.me or its suppliers will not be hold accountable for any damages
-        that will arise with the use or inability to use the materials on
-        ottoapp.me’s Website, even if ottoapp.me or an authorize representative
-        of this Website has been notified, orally or written, of the possibility
-        of such damage. Some jurisdiction does not allow limitations on implied
-        warranties or limitations of liability for incidental damages, these
-        limitations may not apply to you.
+        raaatio.com or its suppliers will not be hold accountable for any
+        damages that will arise with the use or inability to use the materials
+        on raaatio.com’s Website, even if raaatio.com or an authorize
+        representative of this Website has been notified, orally or written, of
+        the possibility of such damage. Some jurisdiction does not allow
+        limitations on implied warranties or limitations of liability for
+        incidental damages, these limitations may not apply to you.
       </p>
 
       <h2>5. Revisions and Errata</h2>
 
       <p>
-        The materials appearing on ottoapp.me’s Website may include technical,
-        typographical, or photographic errors. ottoapp.me will not promise that
+        The materials appearing on raaatio.com’s Website may include technical,
+        typographical, or photographic errors. raaatio.com will not promise that
         any of the materials in this Website are accurate, complete, or current.
-        ottoapp.me may change the materials contained on its Website at any time
-        without notice. ottoapp.me does not make any commitment to update the
-        materials.
+        raaatio.com may change the materials contained on its Website at any
+        time without notice. raaatio.com does not make any commitment to update
+        the materials.
       </p>
 
       <h2>6. Links</h2>
 
       <p>
-        ottoapp.me has not reviewed all of the sites linked to its Website and
+        raaatio.com has not reviewed all of the sites linked to its Website and
         is not responsible for the contents of any such linked site. The
-        presence of any link does not imply endorsement by ottoapp.me of the
+        presence of any link does not imply endorsement by raaatio.com of the
         site. The use of any linked website is at the user’s own risk.
       </p>
 
       <h2>7. Site Terms of Use Modifications</h2>
 
       <p>
-        ottoapp.me may revise these Terms of Use for its Website at any time
+        raaatio.com may revise these Terms of Use for its Website at any time
         without prior notice. By using this Website, you are agreeing to be
         bound by the current version of these Terms and Conditions of Use.
       </p>
@@ -117,7 +117,7 @@ export default function Terms() {
       <h2>9. Governing Law</h2>
 
       <p>
-        Any claim related to ottoapp.me's Website shall be governed by the laws
+        Any claim related to raaatio.com's Website shall be governed by the laws
         of af without regards to its conflict of law provisions.
       </p>
     </div>

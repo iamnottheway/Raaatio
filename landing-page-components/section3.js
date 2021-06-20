@@ -79,7 +79,7 @@ export function Section3() {
                 export a higher resolution.
               </Description>
               <ButtonContainer>
-                <Button label="try the editor" path="/app"></Button>
+                <Button label="try for free" path="/app"></Button>
               </ButtonContainer>
             </div>
           </ContentContainer>

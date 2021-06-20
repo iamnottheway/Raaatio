@@ -23,7 +23,7 @@ export function Hero() {
                 website, product branding or 3D projects.
               </Description>
               <ButtonContainer>
-                <Button label="try the editor" path="/app"></Button>
+                <Button label="try for free" path="/app"></Button>
                 <Button
                   label="buy for $60"
                   bg="#fff"

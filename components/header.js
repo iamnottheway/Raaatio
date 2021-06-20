@@ -6,29 +6,39 @@ import Link from "next/link";
 
 const ActivatePopup = () => {
   const [key, setKey] = useState(undefined);
+  const [error, setError] = useState({ status: false, message: "" });
+
   const context = useContext(RenderContext);
   const { updateAccount } = context;
 
   async function activate() {
     // let key = "3F10ED35-2F384132-BD54EEA6-DBFBE838";
-    let perma = "XPQDt";
-    let endpoint = "https://api.gumroad.com/v2/licenses/verify";
-    let response = await fetch(endpoint, {
-      body: `product_permalink=${perma}&license_key=${key}`,
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      method: "POST",
-    });
-
-    if (response.status === 200) {
-      let data = await response.json();
-      if (data.success) {
-        localStorage.setItem("app", JSON.stringify({ isPro: true }));
-        updateAccount("pro");
-      }
+    if (key === undefined || key === "") {
+      setError({ status: true, message: "Please enter a key" });
     } else {
-      alert("wrong");
+      let perma = "XPQDt";
+      let endpoint = "https://api.gumroad.com/v2/licenses/verify";
+      let response = await fetch(endpoint, {
+        body: `product_permalink=${perma}&license_key=${key}`,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        method: "POST",
+      });
+
+      if (response.status === 200) {
+        let data = await response.json();
+        if (data.success) {
+          localStorage.setItem("app", JSON.stringify({ isPro: true }));
+          updateAccount("pro");
+          setError({ status: false, message: "" });
+        }
+      } else {
+        setError({
+          status: true,
+          message: "Wrong key! Please make sure you have the right license key",
+        });
+      }
     }
   }
 
@@ -41,6 +51,7 @@ const ActivatePopup = () => {
       {(close) => (
         <PopupContainer>
           <Text>License activation</Text>
+          {error.status && <ErrorText>{error.message}</ErrorText>}
           <InputField placeholder="KEY" onChange={onChangeInput}></InputField>
           <ActionButton
             onClick={activate}
@@ -53,6 +64,14 @@ const ActivatePopup = () => {
     </Popup>
   );
 };
+
+const ErrorText = styled.p`
+  padding: 5px 0px;
+  margin: 4px;
+  color: red;
+  font-size: 12px;
+  font-family: Inter;
+`;
 
 const Pricingpopup = () => {
   return (
@@ -153,6 +172,7 @@ export const Header = () => {
         <Link href="/">
           <img src="/static/landing-page/logo.png" alt="logo"></img>
         </Link>
+        {accountType === "pro" && <ProLabel>Pro</ProLabel>}
       </LogoContainer>
 
       {accountType === "free" && (
@@ -170,14 +190,26 @@ export const Header = () => {
   );
 };
 
+const ProLabel = styled.p`
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  cursor: default;
+`;
+
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: row;
 
   img {
-    width: 50px;
+    max-width: 50px;
+    width: auto;
     padding: 6px;
     cursor: pointer;
+    object-fit: contain;
   }
 `;
 

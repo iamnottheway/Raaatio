@@ -41,7 +41,7 @@ export function PricingCard({ type = "free" }) {
       </div>
       {type === "free" && (
         <Button
-          label="try the editor"
+          label="try for free"
           bg="#fff"
           textColor="#000"
           path="/app"
@@ -118,7 +118,7 @@ export function Pricing() {
               </Title>
 
               <ButtonContainer>
-                <Button label="try the editor" path="/app"></Button>
+                <Button label="try for free" path="/app"></Button>
               </ButtonContainer>
             </div>
           </ContentContainer>
@@ -146,7 +146,7 @@ const Container = styled.div`
   padding: 150px 0;
   background-color: #f4f7ff;
   overflow-x: hidden;
-  height: 100%;
+  height: auto;
 `;
 
 const ButtonContainer = styled.div`

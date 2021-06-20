@@ -14,7 +14,15 @@ export const Footer = () => {
         <Wrapper>
           <List>
             <li>
-              <a href="mailto:hey@jbnj.lol">Contact</a>
+              <a href="mailto:jbnj@raaatio.com">Contact</a>
+            </li>
+            <li>
+              <Link href="/faq">FAQ</Link>
+            </li>
+            <li>
+              <a href="https://twitter.com/iamnottheway" target="_blank">
+                @iamnottheway
+              </a>
             </li>
 
             <li>

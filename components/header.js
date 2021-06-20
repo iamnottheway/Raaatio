@@ -179,11 +179,14 @@ export const Header = () => {
         <ButtonContainer>
           <Pricingpopup></Pricingpopup>
           <ActivatePopup></ActivatePopup>
-          <a href="https://gumroad.com/l/XPQDt" target="_blank">
-            <ActionButton bg="#6082FB" color="#fff">
-              Buy Pro for $60
-            </ActionButton>
-          </a>
+          <ActionButtonLink
+            bg="#6082FB"
+            color="#fff"
+            href="https://gumroad.com/l/XPQDt"
+            target="_blank"
+          >
+            Buy Pro for $60
+          </ActionButtonLink>
         </ButtonContainer>
       )}
     </HeaderWrapper>
@@ -245,6 +248,28 @@ const ActionButton = styled.button`
   color: ${(props) => (props.color ? props.color : "#000")};
   padding: 10px 20px;
   cursor: pointer;
+
+  :active {
+    box-shadow: 2px 2px 0px rgba(20, 29, 107, 0.25);
+  }
+`;
+
+const ActionButtonLink = styled.a`
+  margin: 0px 5px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 0px rgba(20, 29, 107, 0.25);
+  border-radius: 1px;
+  background: ${(props) => (props.bg ? props.bg : "#fff")};
+  color: ${(props) => (props.color ? props.color : "#000")};
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: "Inter";
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   :active {
     box-shadow: 2px 2px 0px rgba(20, 29, 107, 0.25);

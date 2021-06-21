@@ -1,6 +1,7 @@
-import FaqSection from "../landing-page-components/faq";
-import { Layout } from "../landing-page-components/layout";
 import styled from "styled-components";
+
+import { Layout } from "../landing-page-components/layout";
+import FaqSection from "../landing-page-components/faq";
 
 export default function Faq() {
   return (

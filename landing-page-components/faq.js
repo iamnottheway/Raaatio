@@ -33,22 +33,24 @@ const faqs = [
   },
 ];
 
-const FaqCard = () => {
-  return (
-    <FaqCardContainer>
-      {faqs.map((i) => (
-        <FaqItem data={i}></FaqItem>
-      ))}
-    </FaqCardContainer>
-  );
-};
-
 const FaqItem = ({ data }) => (
   <Container>
     <Heading size={24}>{data.title}</Heading>
     <Description>{data.description}</Description>
   </Container>
 );
+
+const FaqCard = () => {
+  return (
+    <FaqCardContainer>
+      {faqs.map((i, k) => (
+        <FaqItem data={i} key={k}></FaqItem>
+      ))}
+    </FaqCardContainer>
+  );
+};
+
+export default FaqCard;
 
 const Container = styled.div`
   margin: 0px;
@@ -81,5 +83,3 @@ const FaqCardContainer = styled.div`
   border: 1px solid #000000;
   box-shadow: 10px 10px 0px rgba(30, 29, 96, 0.45);
 `;
-
-export default FaqCard;

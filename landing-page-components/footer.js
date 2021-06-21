@@ -17,7 +17,7 @@ export const Footer = () => {
               <a href="mailto:jbnj@raaatio.com">Contact</a>
             </li>
             <li>
-              <Link href="/faq">FAQ</Link>
+              <a href="/faq">FAQ</a>
             </li>
             <li>
               <a href="https://twitter.com/iamnottheway" target="_blank">
@@ -26,10 +26,10 @@ export const Footer = () => {
             </li>
 
             <li>
-              <Link href="/privacy">Privacy Policy</Link>
+              <a href="/privacy">Privacy Policy</a>
             </li>
             <li>
-              <Link href="/terms">Terms and Condition</Link>
+              <a href="/terms">Terms and Condition</a>
             </li>
           </List>
           <MailchimpSubscribe

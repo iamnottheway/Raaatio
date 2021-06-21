@@ -20,10 +20,10 @@ export function Section2() {
           <ContentContainer>
             <div>
               <Title color="#000">
-                Export High Resolution patterns, make interesting designs
+                Export High-resolution patterns, make interesting designs
               </Title>
               <Description color="#000">
-                Raaatio lets you export unlimited High resolution patterns that
+                Raaatio lets you export unlimited High-resolution patterns that
                 you can use in your projects.
               </Description>
               <ButtonContainer>

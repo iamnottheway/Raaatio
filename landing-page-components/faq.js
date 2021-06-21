@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     title: "What payment method do you accept?",
-    description: `Currently, all payments are processed by Gumroad (gumroad.com). They accept all majar creidt/debit cards and support paypal.`,
+    description: `Currently, all payments are processed by Gumroad (gumroad.com). They accept all major credit/debit cards and support Paypal.`,
   },
   {
     title: "How many patterns can I generate?",

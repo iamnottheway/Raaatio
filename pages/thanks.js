@@ -35,7 +35,7 @@ export default function Thankyou() {
             Your License code has been sent to the email you used to buy Raaatio
             Pro with. You can use the license to activate Raaatio Pro by
             clicking on the activate button in the app header.{" "}
-            <Link href="/app">Go to app</Link>
+            <a href="/app">Go to app</a>
           </Description>
           {/* <img src="/otto-pro-activation-example.png"></img> */}
         </FaqCardContainer>

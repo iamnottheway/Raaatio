@@ -8,8 +8,8 @@ const Features = [
     desp: "Raaatio doesn’t restrict you to a set number of downloads. You can download as many generative patterns as you please.",
   },
   {
-    title: "High Resolution export (pro)",
-    desp: "Looking for High resolution patterns? Fear not, Raaatio let’s you export noise patterns  up to 4K.",
+    title: "High-Resolution export (pro)",
+    desp: "Looking for High-Resolution patterns? Fear not, Raaatio lets you export noise patterns  up to 4K.",
   },
   {
     title: "Personal and Commercial use (pro)",

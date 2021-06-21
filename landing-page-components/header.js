@@ -9,11 +9,11 @@ export const Header = ({ textColor = "#000" }) => {
     <HeaderWrapper>
       <Outer>
         <Container>
-          <Link href="/">
+          <a href="/">
             <LogoContainer>
               <img src="/static/landing-page/logo.png"></img>
             </LogoContainer>
-          </Link>
+          </a>
           <LinkContainer>
             <Button label="FAQ" bg="#fff" textColor="#000" path="/faq"></Button>
             <Button

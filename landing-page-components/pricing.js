@@ -7,7 +7,7 @@ export function PricingCard({ type = "free" }) {
   let data = {
     free: {
       title: "Free plan",
-      desp: "Perfect for personal websites",
+      desp: "Perfect for personal websites or personal projects",
       price: "$0 forever",
 
       features: [
@@ -18,7 +18,7 @@ export function PricingCard({ type = "free" }) {
     },
     pro: {
       title: "Pro plan",
-      desp: "Perfect if you're looking for high quality patterns to use in client projects or business",
+      desp: "Perfect if you're looking for high quality patterns to use in client projects or a commercial website",
       price: "$60/year",
       features: [
         "High Resolution Export (up to 4k)",
@@ -143,10 +143,14 @@ const PropImage = styled.img`
 `;
 
 const Container = styled.div`
-  padding: 150px 0;
+  padding: 15% 0;
   background-color: #f4f7ff;
   overflow-x: hidden;
   height: auto;
+
+  @media (max-width: 500px) {
+    padding: 45% 0;
+  }
 `;
 
 const ButtonContainer = styled.div`

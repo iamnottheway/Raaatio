@@ -11,6 +11,7 @@ const MailChimpForm = ({ status, message, onValidated }) => {
 
   return (
     <Wrapper>
+      <NewsletterText>Sign up to get updates on raaatio</NewsletterText>
       <div>
         <div>
           <Input
@@ -22,7 +23,7 @@ const MailChimpForm = ({ status, message, onValidated }) => {
         </div>
         <div>
           {status === "sending" && <Text>sending...</Text>}
-          {status === "error" && <Text>Opps something went wrong</Text>}
+          {status === "error" && <Text>You're already subscribed </Text>}
           {status === "success" && <Text>{message}</Text>}
         </div>
       </div>
@@ -30,19 +31,38 @@ const MailChimpForm = ({ status, message, onValidated }) => {
   );
 };
 
+const NewsletterText = styled.h3`
+  font-size: 20px;
+  color: #fff;
+  font-family: Inter;
+  margin: 4px 0 !important;
+`;
+
 const Wrapper = styled.div`
   padding: 10px;
   padding-left: 0px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   position: relative;
   z-index: 10;
+  margin: 20px 0 !important;
+
+  @media (max-width: 500px) {
+    padding: 0px;
+  }
 
   > div {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin: 0px !important;
+
+    @media (max-width: 500px) {
+      width: 100%;
+      padding: 0px;
+    }
   }
 
   @media (max-width: 600px) {
@@ -51,9 +71,11 @@ const Wrapper = styled.div`
 `;
 
 const Input = styled.input`
-  padding: 20px 30px;
+  padding: 20px;
   padding-left: 10px;
   margin: 5px !important;
+  margin-left: 0px !important;
+  border-radius: 4px;
 
   @media (max-width: 500px) {
     width: 100%;
@@ -64,7 +86,8 @@ const Input = styled.input`
 const Button = styled.button`
   padding: 20px 30px;
   border: none;
-  border-radius: 0px;
+  border-radius: 4px;
+
   background-color: #4627ff;
   color: #fff;
   cursor: pointer;

@@ -32,7 +32,7 @@ export function Hero() {
                   self={false}
                 ></Button>
               </ButtonContainer>
-              {/* <MailchimpSubscribe
+              <MailchimpSubscribe
                 url={url}
                 render={({ subscribe, status, message }) => (
                   <MailChimpForm
@@ -41,7 +41,7 @@ export function Hero() {
                     onValidated={(formData) => subscribe(formData)}
                   />
                 )}
-              /> */}
+              />
             </div>
           </HeroContentContainer>
         </Wrapper>

@@ -169,9 +169,9 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <LogoContainer>
-        <Link href="/">
+        <a href="/">
           <img src="/static/landing-page/logo.png" alt="logo"></img>
-        </Link>
+        </a>
         {accountType === "pro" && <ProLabel>Pro</ProLabel>}
       </LogoContainer>
 

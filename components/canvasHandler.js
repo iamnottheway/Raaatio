@@ -49,6 +49,7 @@ const CanvasComponent = () => {
       worker.postMessage({ type: "run_canvas", animData: renderParams });
     } else {
       const { current: canvas } = canvasRef;
+      initializeCanvas(canvas, null, null);
 
       if (!isOffscreenCavnasSupported(canvas)) {
         console.log("offScreen canvas not supported");

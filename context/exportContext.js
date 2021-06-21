@@ -16,9 +16,12 @@ export const ExportProvider = ({ children }) => {
   }, [canvasRef.current]);
 
   function initializeCanvas(canvas, worker, offscreenCanvas) {
-    if (!canvas || !worker) {
+    if (!canvas) {
       return;
     }
+    // if (!canvas || !worker) {
+    //   return;
+    // }
     try {
       canvasRef.current = canvas;
       workerRef.current = worker;
@@ -40,7 +43,7 @@ export const ExportProvider = ({ children }) => {
   async function downloadPNG(e) {
     if (canvasRef) {
       const { current: canvas } = canvasRef;
-      const { current: worker } = workerRef;
+      // const { current: worker } = workerRef;
 
       //   canvas.scale(3, 3);
       //   worker.postMessage({ type: "download" });

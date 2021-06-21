@@ -175,7 +175,9 @@ const PropertiesBar = () => {
       {accountType === "free" && (
         <InfoLabel>
           You can only export 800x800 or lower resolutions on the free tier.
-          <a href="/">Upgrade</a>
+          <a href="https://gumroad.com/l/raaatio" target="_blank">
+            Upgrade
+          </a>
         </InfoLabel>
       )}
 

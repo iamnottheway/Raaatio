@@ -53,8 +53,10 @@ export function Hero() {
 
 const PropImage = styled.img`
   position: absolute;
-  top: -100%;
+  top: -49%;
   right: -10%;
+  z-index: 0;
+  transform: scale(1.2);
   z-index: 0;
 
   @media (max-width: 600px) {

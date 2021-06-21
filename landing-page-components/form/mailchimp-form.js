@@ -76,6 +76,7 @@ const Input = styled.input`
   margin: 5px !important;
   margin-left: 0px !important;
   border-radius: 4px;
+  border: none;
 
   @media (max-width: 500px) {
     width: 100%;

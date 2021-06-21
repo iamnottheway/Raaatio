@@ -27,6 +27,7 @@ const Wrapper = styled.div`
   background-color: #f0f0f0;
   background-repeat: repeat;
   background-image: url("/static/grid.svg");
+  background-size: 100%;
 
   @media (max-width: 800px) {
     padding: 100px 0px;

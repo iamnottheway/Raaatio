@@ -24,13 +24,13 @@ export function Hero() {
               </Description>
               <ButtonContainer>
                 <Button label="try for free" path="/app"></Button>
-                <Button
+                {/* <Button
                   label="buy for $60"
                   bg="#fff"
                   textColor="#000"
                   path={links.proLink}
                   self={false}
-                ></Button>
+                ></Button> */}
               </ButtonContainer>
               <MailchimpSubscribe
                 url={url}

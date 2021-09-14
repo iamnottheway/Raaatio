@@ -15,7 +15,7 @@ export const RenderProvider = ({ children }) => {
     shouldRecalculate: true,
     cWidth: 600,
     cHeight: 600,
-    accountType: null,
+    accountType: "pro",
   });
 
   const { bgEnabled, accountType } = renderParams;
@@ -36,13 +36,13 @@ export const RenderProvider = ({ children }) => {
       } else {
         setRenderParams({
           ...renderParams,
-          accountType: "free",
+          accountType: "pro",
         });
       }
     } else {
       setRenderParams({
         ...renderParams,
-        accountType: "free",
+        accountType: "pro",
       });
     }
   }, []);

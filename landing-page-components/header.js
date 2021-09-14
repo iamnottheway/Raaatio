@@ -16,7 +16,7 @@ export const Header = ({ textColor = "#000" }) => {
           </a>
           <LinkContainer>
             <Button label="FAQ" bg="#fff" textColor="#000" path="/faq"></Button>
-            <Button
+            {/* <Button
               label="Pricing"
               bg="#fff"
               textColor="#000"
@@ -27,7 +27,7 @@ export const Header = ({ textColor = "#000" }) => {
               bg="#000"
               path={links.proLink}
               self={false}
-            ></Button>
+            ></Button> */}
           </LinkContainer>
         </Container>
       </Outer>

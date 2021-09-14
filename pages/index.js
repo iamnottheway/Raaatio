@@ -10,7 +10,7 @@ export default function Index() {
       <Hero />
       <Section2 />
       <Section3 />
-      <Pricing />
+      {/* <Pricing /> */}
     </Layout>
   );
 }
